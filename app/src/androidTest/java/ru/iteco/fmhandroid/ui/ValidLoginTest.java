@@ -45,13 +45,25 @@ public class ValidLoginTest {
     public void emptyTest(){}
 
     @Test
-    public void viewLoginScreenTest() {
+    public void viewLoginScreenTest() throws InterruptedException {
+        Thread.sleep(5000);
         ViewInteraction textView = onView(withText("Authorization"));
         textView.check(matches(withText("Authorization")));
     }
 
     @Test
-    public void validLoginTest() {
+    public void viewLogin2Text() throws InterruptedException {
+        Thread.sleep(5000);
+        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
+        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
+
+        ViewInteraction editText = onView(withText("login2"));
+        editText.check(matches(withText("login2")));
+    }
+
+    @Test
+    public void validLoginTest() throws InterruptedException {
+        Thread.sleep(5000);
         ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
         textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
 
@@ -61,6 +73,7 @@ public class ValidLoginTest {
         ViewInteraction materialButton = onView(withText("Sign in"));
         materialButton.perform(click());
 
+        Thread.sleep(5000);
         ViewInteraction imageView = onView(withId(R.id.trademark_image_view));
         imageView.check(matches(isDisplayed()));
     }
