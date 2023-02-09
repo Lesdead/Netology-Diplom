@@ -8,6 +8,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
 
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.ui.helper.MainHelper;
@@ -41,4 +42,5 @@ public class MainScreen {
     // Заявки
     public static ViewInteraction containerListForClaims = onView(withId(R.id.container_list_claim_include_on_fragment_main));
     public static ViewInteraction firstClaim = onView(MainHelper.withIndex(withId(R.id.claim_list_card), 0));
+
 }

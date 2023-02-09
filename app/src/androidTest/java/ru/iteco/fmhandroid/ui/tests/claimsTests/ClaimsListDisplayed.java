@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.ui.steps;
+package ru.iteco.fmhandroid.ui.tests.claimsTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -16,12 +16,14 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
+import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ClaimsSteps {
+public class ClaimsListDisplayed {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -39,10 +41,8 @@ public class ClaimsSteps {
     }
 
     @Test
-    public static void enterClaimsMenu() throws InterruptedException {
-        AuthScreenSteps.ValidDataEnter();
-        MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
+    public void shouldClaimsMenuDisplayed() throws InterruptedException {
+        ClaimsSteps.enterClaimsMenu();
+        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
     }
 }
-

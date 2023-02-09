@@ -1,9 +1,14 @@
-package ru.iteco.fmhandroid.ui.tests.claimsTests;
+package ru.iteco.fmhandroid.ui.tests.mainMenuTests;
+
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -16,23 +21,21 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
-import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
-import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
-
+import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
+import ru.iteco.fmhandroid.ui.steps.MainMenuSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MenuIsDisplayed {
+public class MainMenuDisplayed {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityScenarioRule<AppActivity> mActivityScenarioRule = new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
@@ -41,8 +44,17 @@ public class MenuIsDisplayed {
     }
 
     @Test
-    public void shouldClaimsMenuDisplayed() throws InterruptedException {
-        ClaimsSteps.enterClaimsMenu();
-        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
+    public void shouldMainMenuView() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.aboutOfMenu.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldNewsListOpen() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainScreen.buttonToExpandOrHideNewsPart.perform(click());
+        MainScreen.containerListForNews.check(matches(isDisplayed()));
+    }
+
 }
