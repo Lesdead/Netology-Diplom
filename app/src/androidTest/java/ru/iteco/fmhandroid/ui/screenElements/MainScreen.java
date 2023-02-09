@@ -30,7 +30,7 @@ public class MainScreen {
     public static ViewInteraction aboutOfMenu = onView(withText("About"));
 
     // Переход к блоку цитат о хосписе
-    public static ViewInteraction goToQuotesBlockButton = onView(withId(R.id.our_mission_image_button));
+    public static ViewInteraction goToCitationBlockButton = onView(withId(R.id.our_mission_image_button));
 
     //
     public static ViewInteraction buttonToExpandOrHideNewsPart = onView(MainHelper.withIndex(withId(R.id.expand_material_button), 0));
