@@ -7,7 +7,11 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+
+import static org.hamcrest.Matchers.allOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -36,7 +40,7 @@ public class InvalidDataEnter {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
@@ -50,21 +54,16 @@ public class InvalidDataEnter {
         AuthorizationScreen.loginInput.perform(replaceText("login1"));
         AuthorizationScreen.passwordInput.perform(replaceText("password1"));
         AuthorizationScreen.signInButton.perform(click());
-        Thread.sleep(2000);
-        //проверка на "Wrong login or password"
+        AuthorizationScreen.authorization.check(matches(isDisplayed()));
     }
 
     @Test
     public void shouldOnlyOneValidField() throws InterruptedException {
         Thread.sleep(5000);
-        ViewInteraction loginFrame = onView(withId(R.id.login_text_input_layout));
-        loginFrame.perform(replaceText("login2"));
-        ViewInteraction passwordFrame = onView(withId(R.id.password_text_input_layout));
-        passwordFrame.perform(replaceText("password99"), closeSoftKeyboard());
-        ViewInteraction signInButton = onView(withId(R.id.enter_button));
-        signInButton.perform(click());
-        Thread.sleep(2000);
-        //проверка на "Wrong login or password"
+        AuthorizationScreen.loginInput.perform(replaceText("login2"));
+        AuthorizationScreen.passwordInput.perform(replaceText("password99"));
+        AuthorizationScreen.signInButton.perform(click());
+        AuthorizationScreen.authorization.check(matches(isDisplayed()));
     }
 
     @Test
@@ -72,7 +71,6 @@ public class InvalidDataEnter {
         Thread.sleep(5000);
         ViewInteraction signInButton = onView(withId(R.id.enter_button));
         signInButton.perform(click());
-        Thread.sleep(2000);
-        //проверка на "Login and password cannot be empty"
+        AuthorizationScreen.authorization.check(matches(isDisplayed()));
     }
 }

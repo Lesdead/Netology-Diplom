@@ -1,2 +1,5 @@
-package ru.iteco.fmhandroid.ui.steps;public class PagesSteps {
+package ru.iteco.fmhandroid.ui.steps;
+
+public class PagesSteps {
+
 }

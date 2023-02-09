@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.screenElements;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -18,4 +19,7 @@ public class AuthorizationScreen {
     public static ViewInteraction passwordInput = onView(allOf(withHint("Password"),
             withParent(withParent(withId(R.id.password_text_input_layout)))));
     public static ViewInteraction signInButton = onView(withId(R.id.enter_button));
+
+//    public static ViewInteraction wrongLoginPassword = onView((withText("Wrong login or password")));
+//    public static ViewInteraction emptyLoginOrPass =  onView(withId(R.string.empty_login_or_password));
 }

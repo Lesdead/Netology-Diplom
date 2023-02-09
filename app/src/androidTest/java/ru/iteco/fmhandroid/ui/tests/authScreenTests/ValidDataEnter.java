@@ -35,7 +35,7 @@ public class ValidDataEnter {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
@@ -45,7 +45,7 @@ public class ValidDataEnter {
 
     @Test
     public void shouldLoginScreenDisplayed() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         AuthorizationScreen.authorization.check(matches(withText("Authorization")));
     }
 

@@ -20,7 +20,6 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
 
 @LargeTest
 public class MainMenuSteps {

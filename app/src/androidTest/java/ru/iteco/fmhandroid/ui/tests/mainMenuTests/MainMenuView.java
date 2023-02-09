@@ -50,8 +50,6 @@ public class MainMenuView {
     public void shouldMainMenuView() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainMenuSteps.enterMenuButton();
-        ViewInteraction textView = onView(withId(R.id.container_list_news_include_on_fragment_main));
-        textView.check(matches(withText("News")));
+        MainScreen.aboutOfMenu.check(matches(isDisplayed()));
     }
 }

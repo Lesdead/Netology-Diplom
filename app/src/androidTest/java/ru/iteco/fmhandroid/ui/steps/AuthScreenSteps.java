@@ -35,7 +35,7 @@ public class AuthScreenSteps {
 
     @Test
     public static void ValidDataEnter() throws InterruptedException {
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         AuthorizationScreen.loginInput.perform(replaceText("login2"));
         AuthorizationScreen.passwordInput.perform(replaceText("password2"));
         AuthorizationScreen.signInButton.perform(click());

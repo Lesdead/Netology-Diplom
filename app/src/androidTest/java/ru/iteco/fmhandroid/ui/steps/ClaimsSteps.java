@@ -1,2 +1,4 @@
-package ru.iteco.fmhandroid.ui.steps;public class ClaimsSteps {
+package ru.iteco.fmhandroid.ui.steps;
+
+public class ClaimsSteps {
 }
