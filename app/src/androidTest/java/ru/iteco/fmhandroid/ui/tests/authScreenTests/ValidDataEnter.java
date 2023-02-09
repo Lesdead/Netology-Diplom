@@ -54,6 +54,14 @@ public class ValidDataEnter {
         AuthScreenSteps.ValidDataEnter();
         MainScreen.menuButton.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldExitApp() throws InterruptedException{
+        AuthScreenSteps.ValidDataEnter();
+        MainScreen.authorizationButton.perform(click());
+        MainScreen.logOutButton.perform(click());
+        AuthorizationScreen.authorization.check(matches(isDisplayed()));
+    }
 }
 
 
