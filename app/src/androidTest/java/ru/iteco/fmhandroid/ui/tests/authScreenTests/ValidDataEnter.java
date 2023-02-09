@@ -33,7 +33,7 @@ public class ValidDataEnter {
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-    public void setUp() {
+    public void logInCheck() {
         try {
             Thread.sleep(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
