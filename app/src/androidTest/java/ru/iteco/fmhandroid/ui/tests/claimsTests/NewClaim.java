@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
@@ -47,8 +48,11 @@ public class NewClaim {
 //        ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
     }
 
-//    @Test
-//    public void shouldCancelButton() throws InterruptedException {
-//        ClaimsSteps.openCreateNewClaimMenu();
-//    }
+    @Test
+    public void shouldCancelButton() throws InterruptedException {
+        ClaimsSteps.openCreateNewClaimMenu();
+        ClaimCreationAndEditingScreen.cancelButton.perform(click());
+        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
+    }
 }

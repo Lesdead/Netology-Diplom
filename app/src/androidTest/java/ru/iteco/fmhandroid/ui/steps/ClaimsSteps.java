@@ -46,13 +46,13 @@ public class ClaimsSteps {
         Thread.sleep(1000);
     }
 
-//    @Test
-//    public static void openCreateNewClaimMenu() throws InterruptedException {
-//        AuthScreenSteps.ValidDataEnter();
-//        MainMenuSteps.enterMainMenuButton();
-//        MainScreen.claimsOfMenu.perform(click());
-//        ClaimsScreen.addNewClaimButton.perform(click());
-//    }
+    @Test
+    public static void openCreateNewClaimMenu() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        ClaimsScreen.addNewClaimButton.perform(click());
+    }
 
     @Test
     public static void createNewClaim() throws InterruptedException {
