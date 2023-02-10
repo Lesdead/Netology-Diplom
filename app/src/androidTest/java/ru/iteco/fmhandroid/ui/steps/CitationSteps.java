@@ -27,17 +27,6 @@ public class CitationSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    @Before
-    public void logInCheck() {
-        try {
-            Thread.sleep(3000);
-            AuthorizationScreen.authorization.check(matches(isDisplayed()));
-        } catch (Exception e) {
-            MainScreen.authorizationButton.perform(click());
-            MainScreen.logOutButton.perform(click());
-        }
-    }
-
     @Test
     public static void enterCitationsMenu() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
