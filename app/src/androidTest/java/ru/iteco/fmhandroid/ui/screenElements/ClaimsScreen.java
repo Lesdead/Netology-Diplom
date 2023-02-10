@@ -25,13 +25,12 @@ public class ClaimsScreen {
     public static ViewInteraction executorTextOfClaim = onView(withId(R.id.executor_name_text_view));
     public static ViewInteraction planeDateOfClaim = onView(withId(R.id.plane_date_text_view));
 
-    public static ViewInteraction imageButton2 = onView(
+    public static ViewInteraction editClaimButton = onView(
             allOf(withId(R.id.edit_processing_image_button), withContentDescription("button settings"),
                     withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
                     isDisplayed()));
 
-
-    // Другое
+    // Добавить комментарий
     public static ViewInteraction buttonToAddComment = onView(withId(R.id.add_comment_image_button));
 
     // Claims

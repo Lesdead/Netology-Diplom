@@ -24,7 +24,7 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ClaimsListDisplayed {
+public class newClaim {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -42,14 +42,8 @@ public class ClaimsListDisplayed {
     }
 
     @Test
-    public void shouldClaimsMenuDisplayed() throws InterruptedException {
-        ClaimsSteps.enterClaimsMenu();
-        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void shouldFirstClaimDisplayed() throws InterruptedException {
-        ClaimsSteps.openFirstClaim();
-        ClaimsScreen.editClaimButton.check(matches(isDisplayed()));
+    public void shouldAddNewClaim() throws InterruptedException {
+        ClaimsSteps.createNewClaim();
+        // проверить что создалось
     }
 }

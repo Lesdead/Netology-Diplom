@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.steps;
 
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 
@@ -42,6 +44,24 @@ public class ClaimsSteps {
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.firstClaimCard.perform(click());
         Thread.sleep(1000);
+    }
+
+    @Test
+    public static void createNewClaim() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        ClaimsScreen.addNewClaimButton.perform(click());
+        Thread.sleep(1000);
+        ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
+        ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
+        ClaimCreationAndEditingScreen.executorName.perform(click());
+
+        Thread.sleep(2000);
+        // выбрать дату
+        // выбрать время
+        // заполнить Description
+        // нажать кнопку SAVE
     }
 }
 
