@@ -46,22 +46,30 @@ public class ClaimsSteps {
         Thread.sleep(1000);
     }
 
+//    @Test
+//    public static void openCreateNewClaimMenu() throws InterruptedException {
+//        AuthScreenSteps.ValidDataEnter();
+//        MainMenuSteps.enterMainMenuButton();
+//        MainScreen.claimsOfMenu.perform(click());
+//        ClaimsScreen.addNewClaimButton.perform(click());
+//    }
+
     @Test
     public static void createNewClaim() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        Thread.sleep(1000);
+        Thread.sleep(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-
-        Thread.sleep(2000);
-        // выбрать дату
-        // выбрать время
-        // заполнить Description
-        // нажать кнопку SAVE
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(click());
+        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
+        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
+        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 }
 

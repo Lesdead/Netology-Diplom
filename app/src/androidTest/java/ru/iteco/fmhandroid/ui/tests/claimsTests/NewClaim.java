@@ -2,7 +2,6 @@ package ru.iteco.fmhandroid.ui.tests.claimsTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -24,7 +23,7 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class newClaim {
+public class NewClaim {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -44,6 +43,12 @@ public class newClaim {
     @Test
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
-        // проверить что создалось
+        // не работает
+//        ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
     }
+
+//    @Test
+//    public void shouldCancelButton() throws InterruptedException {
+//        ClaimsSteps.openCreateNewClaimMenu();
+//    }
 }
