@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 
 
@@ -32,6 +33,15 @@ public class ClaimsSteps {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
+    }
+
+    @Test
+    public static void openFirstClaim() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        ClaimsScreen.firstClaimCard.perform(click());
+        Thread.sleep(1000);
     }
 }
 
