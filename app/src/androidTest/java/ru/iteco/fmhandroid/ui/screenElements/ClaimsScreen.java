@@ -2,12 +2,14 @@ package ru.iteco.fmhandroid.ui.screenElements;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 import android.view.View;
 
@@ -20,15 +22,12 @@ import ru.iteco.fmhandroid.ui.helper.MainHelper;
 
 public class ClaimsScreen {
 
-    // Элементы раскрытой заявки (предварительно перейти в заявку)
+    // Элементы раскрытой заявки
     public static ViewInteraction titleTextOfClaim = onView(withId(R.id.title_text_view));
     public static ViewInteraction executorTextOfClaim = onView(withId(R.id.executor_name_text_view));
     public static ViewInteraction planeDateOfClaim = onView(withId(R.id.plane_date_text_view));
-
-    public static ViewInteraction editClaimButton = onView(
-            allOf(withId(R.id.edit_processing_image_button), withContentDescription("button settings"),
-                    withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
-                    isDisplayed()));
+    public static ViewInteraction editClaimButton = onView(withId(R.id.edit_processing_image_button));
+    public static ViewInteraction closeClaim = onView(withId(R.id.close_image_button));
 
     // Добавить комментарий
     public static ViewInteraction buttonToAddComment = onView(withId(R.id.add_comment_image_button));

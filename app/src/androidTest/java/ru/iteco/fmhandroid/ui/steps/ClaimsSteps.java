@@ -43,7 +43,7 @@ public class ClaimsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.firstClaimCard.perform(click());
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Test

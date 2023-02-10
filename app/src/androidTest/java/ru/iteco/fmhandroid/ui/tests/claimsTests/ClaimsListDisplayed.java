@@ -52,4 +52,11 @@ public class ClaimsListDisplayed {
         ClaimsSteps.openFirstClaim();
         ClaimsScreen.editClaimButton.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldOpenClaimClosing() throws InterruptedException {
+        ClaimsSteps.openFirstClaim();
+        ClaimsScreen.closeClaim.perform(click());
+    }
+
 }
