@@ -42,9 +42,9 @@ public class NewClaim {
     }
 
     @Test
+    // Не работает  (Баг)
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
-        // не работает  (Баг)
         // ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
     }
 
@@ -60,5 +60,12 @@ public class NewClaim {
     public void shouldLeaveTitleEmpty() throws InterruptedException {
         ClaimsSteps.createNewClaimWithoutTitle();
         ClaimCreationAndEditingScreen.fillEmptyFieldsMessage.check(matches(isDisplayed()));
+    }
+
+    @Test
+    // Не работает. По причине того что нельзя создать притензию (Баг) см. тест - (shouldAddNewClaim)
+    public void shouldEnterNoEnglishSymbols() throws InterruptedException {
+        ClaimsSteps.createNewClaimNoEnglishSymbols();
+        // ClaimsScreen.firstClaimCard.check(matches(withText("Тест1")));
     }
 }
