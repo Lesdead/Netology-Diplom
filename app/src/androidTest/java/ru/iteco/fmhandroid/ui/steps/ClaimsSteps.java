@@ -71,5 +71,6 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
+
 }
 

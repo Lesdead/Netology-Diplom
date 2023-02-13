@@ -1,23 +1,35 @@
 package ru.iteco.fmhandroid.ui.tests.claimsTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.action.ViewActions.swipeDown;
+import static androidx.test.espresso.action.ViewActions.swipeUp;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static ru.iteco.fmhandroid.ui.helper.MainHelper.nestedScrollTo;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.UUID;
+
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.helper.MainHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
+import ru.iteco.fmhandroid.ui.screenElements.CommentScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
@@ -33,7 +45,7 @@ public class ClaimsListDisplayed {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(7000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
@@ -50,13 +62,29 @@ public class ClaimsListDisplayed {
     @Test
     public void shouldFirstClaimDisplayed() throws InterruptedException {
         ClaimsSteps.openFirstClaim();
-        ClaimsScreen.editClaimButton.check(matches(isDisplayed()));
+        ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
     }
 
     @Test
     public void shouldOpenClaimClosing() throws InterruptedException {
         ClaimsSteps.openFirstClaim();
+        ClaimsScreen.closeClaim.perform(nestedScrollTo());
         ClaimsScreen.closeClaim.perform(click());
+        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldCreateValidComment() throws InterruptedException {
+        int number = (int) ( Math.random() * 100 );
+        String comment = "test" + number;
+        ClaimsSteps.openFirstClaim();
+        ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
+        ClaimsScreen.buttonToAddComment.perform(click());
+        CommentScreen.commentTestInputEditText.perform(replaceText(comment));
+        CommentScreen.saveButton.perform(click());
+        ClaimsScreen.newTestComment(comment);
+        Thread.sleep(1000);
+    }
+
 
 }

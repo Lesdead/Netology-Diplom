@@ -44,8 +44,8 @@ public class NewClaim {
     @Test
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
-        // не работает
-//        ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
+        // не работает  (Баг)
+        // ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
     }
 
     @Test
