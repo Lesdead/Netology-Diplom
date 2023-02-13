@@ -28,6 +28,7 @@ import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.helper.MainHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.CommentScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
@@ -41,6 +42,9 @@ public class ClaimsListDisplayed {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+    int number = (int) ( Math.random() * 100 );
+    String title = "test" + number;
+    String comment = "test" + number;
 
     @Before
     public void logInCheck() {
@@ -75,8 +79,6 @@ public class ClaimsListDisplayed {
 
     @Test
     public void shouldCreateValidComment() throws InterruptedException {
-        int number = (int) ( Math.random() * 100 );
-        String comment = "test" + number;
         ClaimsSteps.openFirstClaim();
         ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
         ClaimsScreen.buttonToAddComment.perform(click());
@@ -86,5 +88,14 @@ public class ClaimsListDisplayed {
         Thread.sleep(1000);
     }
 
-
+    @Test
+    public void shouldChangeTitleOfClaim() throws InterruptedException{
+        ClaimsSteps.openFirstClaim();
+        ClaimsScreen.editClaimButton.perform(nestedScrollTo());
+        ClaimsScreen.editClaimButton.perform(click());
+        ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(title));
+        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+        ClaimsScreen.editClaimButton.perform(nestedScrollTo());
+        ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
+    }
 }
