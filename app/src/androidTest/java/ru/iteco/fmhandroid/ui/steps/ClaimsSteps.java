@@ -72,5 +72,22 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 
+    @Test
+    public static void createNewClaimWithoutTitle() throws InterruptedException {
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        ClaimsScreen.addNewClaimButton.perform(click());
+        Thread.sleep(500);
+        ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(""));
+        ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
+        ClaimCreationAndEditingScreen.executorName.perform(click());
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(click());
+        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
+        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
+        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+    }
 }
 

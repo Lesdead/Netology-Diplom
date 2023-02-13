@@ -40,7 +40,7 @@ public class InvalidDataEnter {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(7000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());

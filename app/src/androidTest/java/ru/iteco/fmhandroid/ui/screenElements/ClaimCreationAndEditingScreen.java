@@ -13,8 +13,12 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+import android.view.View;
+
 import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.core.IsInstanceOf;
 
 import ru.iteco.fmhandroid.R;
 
@@ -33,4 +37,6 @@ public class ClaimCreationAndEditingScreen {
     public static ViewInteraction saveButtonOfClaim = onView(withId(R.id.save_button));
 
     public static ViewInteraction cancelButton = onView(withText("CANCEL"));
+
+    public static ViewInteraction fillEmptyFieldsMessage = onView( withText("Fill empty fields"));
 }
