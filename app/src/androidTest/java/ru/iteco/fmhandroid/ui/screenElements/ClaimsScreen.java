@@ -41,6 +41,7 @@ public class ClaimsScreen {
     public static ViewInteraction containerForClaims = onView(withId(R.id.claim_list_recycler_view));
     public static ViewInteraction filtersButton = onView(withId(R.id.filters_material_button));
 
+    public static ViewInteraction filterWindowTitle = onView(withId(R.id.claim_filter_dialog_title));
     //////////////////////////////////////
 
     public static ViewInteraction titleLabel = onView(withId(R.id.title_label_text_view));

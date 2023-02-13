@@ -98,4 +98,11 @@ public class ClaimsListDisplayed {
         ClaimsScreen.editClaimButton.perform(nestedScrollTo());
         ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldOpenFilterClaims()throws InterruptedException{
+        ClaimsSteps.enterClaimsMenu();
+        ClaimsScreen.filtersButton.perform(click());
+        ClaimsScreen.filterWindowTitle.check(matches(isDisplayed()));
+    }
 }
