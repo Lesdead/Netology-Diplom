@@ -29,6 +29,6 @@ public class NewsCreationEditingScreen {
     public static ViewInteraction saveButtonOfNews = onView(withId(R.id.save_button));
     public static ViewInteraction cancelButtonOfNews = onView(withId(R.id.cancel_button));
 
-    public static ViewInteraction advertButtonOfNews = onView(withText("Объявление"));
+    public static ViewInteraction errorMassageEmpty = onView(withHint("Fill empty fields"));
     public static ViewInteraction advertButtonOfNews1 = onView(withHint("Объявление"));
 }

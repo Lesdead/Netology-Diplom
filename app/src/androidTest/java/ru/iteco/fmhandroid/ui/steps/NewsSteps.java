@@ -17,7 +17,6 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsScreen;
-import ru.iteco.fmhandroid.ui.tests.newsTests.addEditNewsScreen;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -29,7 +28,7 @@ public class NewsSteps {
     static int number = (int) ( Math.random() * 1000 );
     static int number1 = (int) ( Math.random() * 1000 );
     public static String title = "test" + number;
-    static String description = "test" + number1;
+    public static String description = "test" + number1;
 
     @Test
     public static void enterNewsMenu() throws InterruptedException {
