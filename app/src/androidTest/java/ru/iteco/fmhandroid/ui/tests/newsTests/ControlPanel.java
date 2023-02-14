@@ -19,12 +19,13 @@ import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
+import ru.iteco.fmhandroid.ui.screenElements.NewsCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsScreen;
 import ru.iteco.fmhandroid.ui.steps.NewsSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class NewsMenuScreen {
+public class ControlPanel {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -42,8 +43,14 @@ public class NewsMenuScreen {
     }
 
     @Test
-    public void shouldNewsMenuScreen() throws InterruptedException {
-        NewsSteps.enterNewsMenu();
-        NewsScreen.titleOfNewsBlock.check(matches(isDisplayed()));
+    public void shouldControlPanelOpened() throws InterruptedException {
+        NewsSteps.openControlPanel();
+        NewsScreen.addNewsButton.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void shouldAddNewsButton() throws InterruptedException {
+        NewsSteps.openCreateNewsScreen();
+        NewsCreationAndEditingScreen.titleOfNewsCreatingWindow.check(matches(isDisplayed()));
     }
 }

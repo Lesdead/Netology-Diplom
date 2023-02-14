@@ -50,5 +50,10 @@ public class NewsSteps {
         NewsScreen.editNewsButton.perform(click());
     }
 
+    @Test
+    public static void openCreateNewsScreen() throws InterruptedException {
+        openControlPanel();
+        NewsScreen.addNewsButton.perform(click());
+    }
 
 }
