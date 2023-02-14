@@ -96,6 +96,6 @@ public class AddEditNewsScreen {
         NewsScreen.newTestNews.check(matches(isDisplayed()));
         NewsScreen.deleteNewsButton(NewsSteps.title).perform(click());
         NewsScreen.okButton.perform(click());
-        NewsScreen.refreshButton1.check(matches(isDisplayed()));
+        NewsScreen.refreshButton.check(matches(isDisplayed()));
     }
 }

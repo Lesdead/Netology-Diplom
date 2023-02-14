@@ -45,8 +45,8 @@ public class NewsScreen {
 
     ///////////
 
-    public static ViewInteraction refreshButton = onView(withId(R.id.control_panel_news_retry_material_button));
-    public static ViewInteraction refreshButton1 = onView(withText("REFRESH"));
+    public static ViewInteraction refreshButton1 = onView(withId(R.id.control_panel_news_retry_material_button));
+    public static ViewInteraction refreshButton = onView(withText("REFRESH"));
 
     public static ViewInteraction deleteNewsButton(String newsTitle) {
         return onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
