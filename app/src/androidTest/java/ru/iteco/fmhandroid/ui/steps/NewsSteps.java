@@ -1,7 +1,10 @@
 package ru.iteco.fmhandroid.ui.steps;
 
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -28,9 +31,9 @@ public class NewsSteps {
     static int number = (int) ( Math.random() * 1000 );
     static int number1 = (int) ( Math.random() * 1000 );
     static int number2 = (int) ( Math.random() * 1000 );
-    public static String title = "test" + number;
-    public static String description = "test" + number1;
-    public static String cyrillicTitle = "тест" + number2;
+    public static String title = "testTITLE" + number;
+    public static String description = "testDESC" + number1;
+    public static String cyrillicTitle = "testЗАГОЛОВОК" + number2;
 
     @Test
     public static void enterNewsMenu() throws InterruptedException {
@@ -62,5 +65,39 @@ public class NewsSteps {
         NewsCreationEditingScreen.okButton.perform(click());
         NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(description));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
+    }
+
+    @Test
+    public static void deleteTestNews(){
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.editNewsButton.perform(click());
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
+        NewsScreen.deleteNewsButton(title).perform(click());
+        NewsScreen.okButton.perform(click());
+    }
+
+    @Test
+    public static void deleteCyrillicTestNews(){
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.claimsOfMenu.perform(click());
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.editNewsButton.perform(click());
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
+        NewsScreen.deleteNewsButton(cyrillicTitle).perform(click());
+        NewsScreen.okButton.perform(click());
     }
 }

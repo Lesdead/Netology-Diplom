@@ -43,14 +43,16 @@ public class NewsScreen {
     // Сортировка новостей
     public static ViewInteraction sortNewsButton = onView(withId(R.id.sort_news_material_button));
 
-    ///////////
-
-    public static ViewInteraction refreshButton1 = onView(withId(R.id.control_panel_news_retry_material_button));
     public static ViewInteraction refreshButton = onView(withText("REFRESH"));
 
     public static ViewInteraction deleteNewsButton(String newsTitle) {
         return onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
     }
+
+    public static ViewInteraction editNewsButton(String newsTitle) {
+        return onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
+    }
+
     ///////////
     public static ViewInteraction newTestNews = onView(withText(NewsSteps.title));
     public static ViewInteraction newTestNewsCyrillicTitle = onView(withText(NewsSteps.cyrillicTitle));

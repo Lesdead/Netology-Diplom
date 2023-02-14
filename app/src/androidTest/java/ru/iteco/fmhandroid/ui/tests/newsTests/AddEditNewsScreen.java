@@ -51,6 +51,7 @@ public class AddEditNewsScreen {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.newTestNews.check(matches(isDisplayed()));
+        NewsSteps.deleteTestNews();
     }
 
     @Test
@@ -77,8 +78,8 @@ public class AddEditNewsScreen {
         NewsCreationEditingScreen.okButton.perform(click());
         NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(NewsSteps.description));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
-        MainScreen.newsOfMenu.perform(click());
         NewsScreen.newTestNewsCyrillicTitle.check(matches(isDisplayed()));
+        NewsSteps.deleteCyrillicTestNews();
     }
 
     @Test
@@ -97,5 +98,24 @@ public class AddEditNewsScreen {
         NewsScreen.deleteNewsButton(NewsSteps.title).perform(click());
         NewsScreen.okButton.perform(click());
         NewsScreen.refreshButton.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void shouldCreateAndChangeNewsCategory() throws InterruptedException {
+        NewsSteps.createValidNews();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.editNewsButton.perform(click());
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
+        NewsScreen.editNewsButton(NewsSteps.title).perform(click());
+        NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("День рождения"));
+        NewsCreationEditingScreen.saveButtonOfNews.perform(click());
+        NewsScreen.newTestNews.check(matches(isDisplayed()));
+        NewsSteps.deleteTestNews();
     }
 }
