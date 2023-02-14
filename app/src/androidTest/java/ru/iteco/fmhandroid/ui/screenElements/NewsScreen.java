@@ -53,6 +53,15 @@ public class NewsScreen {
         return onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
     }
 
+    public static ViewInteraction openDescNewsButton(String newsTitle) {
+        return onView(allOf(withId(R.id.view_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
+    }
+
+    public static ViewInteraction openDescNewsField(String newsTitle) {
+        return onView(allOf(withId(R.id.news_item_description_text_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
+    }
+
+
     ///////////
     public static ViewInteraction newTestNews = onView(withText(NewsSteps.title));
     public static ViewInteraction newTestNewsCyrillicTitle = onView(withText(NewsSteps.cyrillicTitle));

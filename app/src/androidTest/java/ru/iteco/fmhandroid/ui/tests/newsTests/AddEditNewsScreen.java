@@ -118,4 +118,24 @@ public class AddEditNewsScreen {
         NewsScreen.newTestNews.check(matches(isDisplayed()));
         NewsSteps.deleteTestNews();
     }
+
+    @Test
+    public void shouldCreateAndChangeDescriptionData() throws InterruptedException {
+        NewsSteps.createValidNews();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.editNewsButton.perform(click());
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
+        NewsScreen.editNewsButton(NewsSteps.title).perform(click());
+        NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText("qwerty"));
+        NewsCreationEditingScreen.saveButtonOfNews.perform(click());
+        NewsScreen.openDescNewsButton(NewsSteps.title).perform(click());
+        NewsScreen.openDescNewsField(NewsSteps.title).check(matches(isDisplayed()));
+        NewsSteps.deleteTestNews();
+    }
 }
