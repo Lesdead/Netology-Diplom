@@ -4,6 +4,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -77,5 +79,23 @@ public class AddEditNewsScreen {
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.newTestNewsCyrillicTitle.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void shouldCreateDeleteNews() throws InterruptedException {
+        NewsSteps.createValidNews();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.editNewsButton.perform(click());
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
+        NewsScreen.newTestNews.check(matches(isDisplayed()));
+        NewsScreen.deleteNewsButton(NewsSteps.title).perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.refreshButton1.check(matches(isDisplayed()));
     }
 }

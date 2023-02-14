@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.screenElements;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
@@ -39,14 +40,25 @@ public class NewsScreen {
     // Создание новости
     public static ViewInteraction addNewsButton = onView(withId(R.id.add_news_image_view));
 
-    // Кнопка "ОК"
-    public static ViewInteraction okButton = onView(withText("OK"));
-
     // Сортировка новостей
     public static ViewInteraction sortNewsButton = onView(withId(R.id.sort_news_material_button));
 
-    public static ViewInteraction deleteNewsButton = onView(withId(R.id.delete_news_item_image_view));
+    ///////////
 
+    public static ViewInteraction refreshButton = onView(withId(R.id.control_panel_news_retry_material_button));
+    public static ViewInteraction refreshButton1 = onView(withText("REFRESH"));
+
+    public static ViewInteraction deleteNewsButton(String newsTitle) {
+        return onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
+    }
+    ///////////
     public static ViewInteraction newTestNews = onView(withText(NewsSteps.title));
     public static ViewInteraction newTestNewsCyrillicTitle = onView(withText(NewsSteps.cyrillicTitle));
+
+    // Фильтр новостей
+    public static ViewInteraction filterNewsButton = onView(withId(R.id.filter_news_material_button));
+    public static ViewInteraction filterNewsButtonDate = onView(withId(R.id.news_item_publish_date_start_text_input_edit_text));
+    public static ViewInteraction filterNewsButtonTime = onView(withId(R.id.news_item_publish_date_end_text_input_edit_text));
+    public static ViewInteraction okButton = onView(withText("OK"));
+    public static ViewInteraction filterOkButton = onView(withId(R.id.filter_button));
 }
