@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.screenElements;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -11,6 +12,7 @@ import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.ui.helper.MainHelper;
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.steps.NewsSteps;
 
 
 public class NewsScreen {
@@ -44,4 +46,6 @@ public class NewsScreen {
     public static ViewInteraction sortNewsButton = onView(withId(R.id.sort_news_material_button));
 
     public static ViewInteraction deleteNewsButton = onView(withId(R.id.delete_news_item_image_view));
+
+    public static ViewInteraction newTestNews = onView(withText(NewsSteps.title));
 }
