@@ -42,4 +42,6 @@ public class NewsScreen {
 
     // Сортировка новостей
     public static ViewInteraction sortNewsButton = onView(withId(R.id.sort_news_material_button));
+
+    public static ViewInteraction deleteNewsButton = onView(withId(R.id.delete_news_item_image_view));
 }

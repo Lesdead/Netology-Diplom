@@ -26,6 +26,7 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AboutAppScreen;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
+import ru.iteco.fmhandroid.ui.screenElements.NewsScreen;
 import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 
 @LargeTest
@@ -42,4 +43,12 @@ public class NewsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
     }
+
+    @Test
+    public static void openControlPanel() throws InterruptedException {
+        enterNewsMenu();
+        NewsScreen.editNewsButton.perform(click());
+    }
+
+
 }

@@ -1,8 +1,9 @@
-package ru.iteco.fmhandroid.ui.tests.citationsTests;
+package ru.iteco.fmhandroid.ui.tests.aboutMenuTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -15,16 +16,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.screenElements.AboutAppScreen;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
-import ru.iteco.fmhandroid.ui.screenElements.CitationsScreen;
-import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
-import ru.iteco.fmhandroid.ui.steps.CitationSteps;
-import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
+import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CitationsListDisplayed {
+public class AboutMenuScreen {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -42,8 +41,8 @@ public class CitationsListDisplayed {
     }
 
     @Test
-    public void shouldCitationMenuIsDisplayed() throws InterruptedException {
-        CitationSteps.enterCitationsMenu();
-        CitationsScreen.firstMissionTitleValue.check(matches(isDisplayed()));
+    public void shouldAboutMenuDisplayed() throws InterruptedException {
+        AboutSteps.enterAboutMenu();
+        AboutAppScreen.versionValue.check(matches(isDisplayed()));
     }
 }

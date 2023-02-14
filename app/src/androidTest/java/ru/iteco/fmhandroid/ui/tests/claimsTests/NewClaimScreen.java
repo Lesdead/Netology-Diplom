@@ -24,7 +24,7 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class NewClaim {
+public class NewClaimScreen {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =

@@ -1,14 +1,9 @@
-package ru.iteco.fmhandroid.ui.tests.mainMenuTests;
-
+package ru.iteco.fmhandroid.ui.tests.citationsTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -21,16 +16,17 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.screenElements.CitationsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
-import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
-import ru.iteco.fmhandroid.ui.steps.MainMenuSteps;
+import ru.iteco.fmhandroid.ui.steps.CitationSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainMenuDisplayed {
+public class CitationsListScreen {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule = new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
     public void logInCheck() {
@@ -44,17 +40,8 @@ public class MainMenuDisplayed {
     }
 
     @Test
-    public void shouldMainMenuView() throws InterruptedException {
-        AuthScreenSteps.ValidDataEnter();
-        MainMenuSteps.enterMainMenuButton();
-        MainScreen.aboutOfMenu.check(matches(isDisplayed()));
+    public void shouldCitationMenuIsDisplayed() throws InterruptedException {
+        CitationSteps.enterCitationsMenu();
+        CitationsScreen.firstMissionTitleValue.check(matches(isDisplayed()));
     }
-
-    @Test
-    public void shouldNewsListOpen() throws InterruptedException {
-        AuthScreenSteps.ValidDataEnter();
-        MainScreen.buttonToExpandOrHideNewsPart.perform(click());
-        MainScreen.containerListForNews.check(matches(isDisplayed()));
-    }
-
 }
