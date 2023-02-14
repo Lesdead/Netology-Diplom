@@ -48,4 +48,5 @@ public class NewsScreen {
     public static ViewInteraction deleteNewsButton = onView(withId(R.id.delete_news_item_image_view));
 
     public static ViewInteraction newTestNews = onView(withText(NewsSteps.title));
+    public static ViewInteraction newTestNewsCyrillicTitle = onView(withText(NewsSteps.cyrillicTitle));
 }

@@ -63,4 +63,19 @@ public class AddEditNewsScreen {
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
         NewsCreationEditingScreen.titleCreatingWindow.check(matches(isDisplayed()));
     }
+
+    @Test
+    public void shouldNewNewsCyrillicTitle() throws InterruptedException {
+        NewsSteps.openCreateNewsScreen();
+        NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
+        NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(NewsSteps.cyrillicTitle));
+        NewsCreationEditingScreen.dateInputOfNews.perform(click());
+        NewsCreationEditingScreen.okButton.perform(click());
+        NewsCreationEditingScreen.timeInputOfNews.perform(click());
+        NewsCreationEditingScreen.okButton.perform(click());
+        NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(NewsSteps.description));
+        NewsCreationEditingScreen.saveButtonOfNews.perform(click());
+        MainScreen.newsOfMenu.perform(click());
+        NewsScreen.newTestNewsCyrillicTitle.check(matches(isDisplayed()));
+    }
 }

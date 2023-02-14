@@ -27,8 +27,10 @@ public class NewsSteps {
             new ActivityScenarioRule<>(AppActivity.class);
     static int number = (int) ( Math.random() * 1000 );
     static int number1 = (int) ( Math.random() * 1000 );
+    static int number2 = (int) ( Math.random() * 1000 );
     public static String title = "test" + number;
     public static String description = "test" + number1;
+    public static String cyrillicTitle = "тест" + number2;
 
     @Test
     public static void enterNewsMenu() throws InterruptedException {
