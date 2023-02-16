@@ -64,7 +64,7 @@ public class NewsSteps {
     }
 
     @Test
-    public static void deleteTestNews(){
+    public static void deleteTestNews() throws InterruptedException {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         MainMenuSteps.enterMainMenuButton();
@@ -76,7 +76,7 @@ public class NewsSteps {
         NewsScreen.filterNewsButtonTime.perform(click());
         NewsScreen.okButton.perform(click());
         NewsScreen.filterOkButton.perform(click());
-        NewsScreen.deleteNewsButton(title).perform(click());
+        NewsScreen.sortButton.perform(click());NewsScreen.deleteNewsButton(title).perform(click());
         NewsScreen.okButton.perform(click());
     }
 
@@ -93,7 +93,18 @@ public class NewsSteps {
         NewsScreen.filterNewsButtonTime.perform(click());
         NewsScreen.okButton.perform(click());
         NewsScreen.filterOkButton.perform(click());
+        NewsScreen.sortButton.perform(click());
         NewsScreen.deleteNewsButton(cyrillicTitle).perform(click());
         NewsScreen.okButton.perform(click());
+    }
+
+    @Test
+    public static void useNewsFilter(){
+        NewsScreen.filterNewsButton.perform(click());
+        NewsScreen.filterNewsButtonDate.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterNewsButtonTime.perform(click());
+        NewsScreen.okButton.perform(click());
+        NewsScreen.filterOkButton.perform(click());
     }
 }

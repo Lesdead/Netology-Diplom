@@ -23,6 +23,10 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+
+// Из-за отсутствия возможности создать новую притензию (баг приложения)
+// Не получается запустить все тесты сразу, они мешают друг другу
+// Но запускаются и проходят по одиночке
 public class ClaimsListScreen {
 
     @Rule
@@ -53,7 +57,7 @@ public class ClaimsListScreen {
     }
 
     @Test
-    public void shouldFirstClaimDisplayed() throws InterruptedException {
+    public void shouldClaimDisplayed() throws InterruptedException {
         ClaimsSteps.openFirstClaim();
         ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
     }

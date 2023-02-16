@@ -48,6 +48,15 @@ public class AddEditNewsScreen {
         NewsSteps.deleteTestNews();
     }
 
+
+
+    @Test
+    public void shouldCreateDeleteNews() throws InterruptedException {
+        NewsSteps.createValidNews();
+        NewsSteps.deleteTestNews();
+    // Не нашел как сравнить отсутствие элемента
+    }
+
     @Test
     public void shouldNewNewsWithoutCategory() throws InterruptedException {
         NewsSteps.openCreateNewsScreen();
@@ -72,6 +81,8 @@ public class AddEditNewsScreen {
         NewsCreationEditingScreen.okButton.perform(click());
         NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(NewsSteps.description));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
+        NewsSteps.useNewsFilter();
+        NewsScreen.sortButton.perform(click());
         NewsScreen.newTestNewsCyrillicTitle.check(matches(isDisplayed()));
         NewsSteps.deleteCyrillicTestNews();
     }
@@ -82,12 +93,8 @@ public class AddEditNewsScreen {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.editNewsButton.perform(click());
-        NewsScreen.filterNewsButton.perform(click());
-        NewsScreen.filterNewsButtonDate.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterNewsButtonTime.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterOkButton.perform(click());
+        NewsSteps.useNewsFilter();
+        NewsScreen.sortButton.perform(click());
         NewsScreen.editNewsButton(NewsSteps.title).perform(click());
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("День рождения"));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
@@ -101,12 +108,8 @@ public class AddEditNewsScreen {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.editNewsButton.perform(click());
-        NewsScreen.filterNewsButton.perform(click());
-        NewsScreen.filterNewsButtonDate.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterNewsButtonTime.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterOkButton.perform(click());
+        NewsSteps.useNewsFilter();
+        NewsScreen.sortButton.perform(click());
         NewsScreen.editNewsButton(NewsSteps.title).perform(click());
         NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText("qwerty"));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());

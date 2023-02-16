@@ -3,17 +3,14 @@ package ru.iteco.fmhandroid.ui.tests.claimsTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -45,7 +42,7 @@ public class NewClaimScreen {
     // Не работает  (Баг)
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
-        // ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
+//        ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
     }
 
     @Test

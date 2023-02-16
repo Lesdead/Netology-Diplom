@@ -22,6 +22,7 @@ public class NewsScreen {
     public static ViewInteraction filterNewsButtonTime = onView(withId(R.id.news_item_publish_date_end_text_input_edit_text));
     public static ViewInteraction okButton = onView(withText("OK"));
     public static ViewInteraction filterOkButton = onView(withId(R.id.filter_button));
+    public static ViewInteraction sortButton = onView(withId(R.id.sort_news_material_button));
 
     public static ViewInteraction deleteNewsButton(String newsTitle) {
         return onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitle))))))));
