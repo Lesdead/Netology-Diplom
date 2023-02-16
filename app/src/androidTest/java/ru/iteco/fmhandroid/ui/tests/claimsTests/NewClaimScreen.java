@@ -64,7 +64,7 @@ public class NewClaimScreen {
 
     @Test
     // Не работает. По причине того что нельзя создать притензию (Баг) см. тест - (shouldAddNewClaim)
-    public void shouldEnterNoEnglishSymbols() throws InterruptedException {
+    public void shouldEnterCyrillicSymbols() throws InterruptedException {
         ClaimsSteps.createNewClaimNoEnglishSymbols();
         // ClaimsScreen.firstClaimCard.check(matches(withText("Тест1")));
     }

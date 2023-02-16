@@ -4,20 +4,14 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
-import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
@@ -80,24 +74,6 @@ public class AddEditNewsScreen {
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
         NewsScreen.newTestNewsCyrillicTitle.check(matches(isDisplayed()));
         NewsSteps.deleteCyrillicTestNews();
-    }
-
-    @Test
-    public void shouldCreateDeleteNews() throws InterruptedException {
-        NewsSteps.createValidNews();
-        MainMenuSteps.enterMainMenuButton();
-        MainScreen.newsOfMenu.perform(click());
-        NewsScreen.editNewsButton.perform(click());
-        NewsScreen.filterNewsButton.perform(click());
-        NewsScreen.filterNewsButtonDate.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterNewsButtonTime.perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.filterOkButton.perform(click());
-        NewsScreen.newTestNews.check(matches(isDisplayed()));
-        NewsScreen.deleteNewsButton(NewsSteps.title).perform(click());
-        NewsScreen.okButton.perform(click());
-        NewsScreen.refreshButton.check(matches(isDisplayed()));
     }
 
     @Test

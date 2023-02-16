@@ -4,19 +4,15 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import static ru.iteco.fmhandroid.ui.helper.MainHelper.nestedScrollTo;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -25,7 +21,6 @@ import ru.iteco.fmhandroid.ui.screenElements.CommentScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
-
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class ClaimsListScreen {
@@ -33,9 +28,12 @@ public class ClaimsListScreen {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-    int number = (int) ( Math.random() * 100 );
-    String title = "test" + number;
-    String comment = "test" + number;
+
+    int titleNumber = (int) ( Math.random() * 1000 );
+    String title = "testNum" + titleNumber;
+
+    int comNumber = (int) ( Math.random() * 1000 );
+    String comment = "testComm" + comNumber;
 
     @Before
     public void logInCheck() {

@@ -1,21 +1,14 @@
 package ru.iteco.fmhandroid.ui.steps;
 
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;
@@ -28,12 +21,15 @@ public class NewsSteps {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-    static int number = (int) ( Math.random() * 1000 );
-    static int number1 = (int) ( Math.random() * 1000 );
-    static int number2 = (int) ( Math.random() * 1000 );
-    public static String title = "testTITLE" + number;
-    public static String description = "testDESC" + number1;
-    public static String cyrillicTitle = "testЗАГОЛОВОК" + number2;
+
+    static int titleNumber = (int) ( Math.random() * 1000 );
+    public static String title = "testTITLE" + titleNumber;
+
+    static int descNumber = (int) ( Math.random() * 1000 );
+    public static String description = "testDESC" + descNumber;
+
+    static int cyrlNumber = (int) ( Math.random() * 1000 );
+    public static String cyrillicTitle = "testЗАГОЛОВОК" + cyrlNumber;
 
     @Test
     public static void enterNewsMenu() throws InterruptedException {
