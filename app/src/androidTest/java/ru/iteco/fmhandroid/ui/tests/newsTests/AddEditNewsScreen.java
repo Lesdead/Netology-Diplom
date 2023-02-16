@@ -48,8 +48,6 @@ public class AddEditNewsScreen {
         NewsSteps.deleteTestNews();
     }
 
-
-
     @Test
     public void shouldCreateDeleteNews() throws InterruptedException {
         NewsSteps.createValidNews();
