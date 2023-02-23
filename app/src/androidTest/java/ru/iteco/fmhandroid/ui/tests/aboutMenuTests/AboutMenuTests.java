@@ -1,27 +1,27 @@
-package ru.iteco.fmhandroid.ui.tests.citationsTests;
+package ru.iteco.fmhandroid.ui.tests.aboutMenuTests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.screenElements.AboutAppScreen;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
-import ru.iteco.fmhandroid.ui.screenElements.CitationsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
-import ru.iteco.fmhandroid.ui.steps.CitationSteps;
+import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class CitationsListScreen {
+public class AboutMenuTests {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -39,16 +39,10 @@ public class CitationsListScreen {
     }
 
     @Test
-    public void shouldCitationMenuIsDisplayed() throws InterruptedException {
-        CitationSteps.enterCitationsMenu();
-        CitationsScreen.secondMissionTitleValue.check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void shouldOpenFirstCitation() throws InterruptedException {
-        CitationSteps.enterCitationsMenu();
-        CitationsScreen.secondMissionTitleValue.perform(click());
-        Thread.sleep(5000);
-        CitationsScreen.secondCitationOpenButton.check(matches(isDisplayed()));
+    @DisplayName("Отображение экрана - About")
+    @Description("При нажатии на кнопку About  в меню серху открывается информация о приложении")
+    public void shouldAboutMenuDisplayed() throws InterruptedException {
+        AboutSteps.enterAboutMenu();
+        AboutAppScreen.versionValue.check(matches(isDisplayed()));
     }
 }

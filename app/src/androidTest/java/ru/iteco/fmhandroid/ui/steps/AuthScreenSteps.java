@@ -4,12 +4,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
@@ -22,7 +19,6 @@ public class AuthScreenSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    @Test
     public static void ValidDataEnter() throws InterruptedException {
         Thread.sleep(5000);
         AuthorizationScreen.loginInput.perform(replaceText("login2"));

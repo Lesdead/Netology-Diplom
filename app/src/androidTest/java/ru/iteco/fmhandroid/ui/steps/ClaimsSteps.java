@@ -4,12 +4,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -23,15 +20,14 @@ public class ClaimsSteps {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+    static String oldDate = "14.07.1789";
 
-    @Test
     public static void enterClaimsMenu() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
     }
 
-    @Test
     public static void openFirstClaim() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -40,7 +36,6 @@ public class ClaimsSteps {
         Thread.sleep(500);
     }
 
-    @Test
     public static void openCreateNewClaimMenu() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -48,7 +43,6 @@ public class ClaimsSteps {
         ClaimsScreen.addNewClaimButton.perform(click());
     }
 
-    @Test
     public static void createNewClaim() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -58,15 +52,13 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(click());
-        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 
-    @Test
     public static void createNewClaimWithoutTitle() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -76,16 +68,14 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(""));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(click());
-        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 
-    @Test
-    public static void createNewClaimNoEnglishSymbols() throws InterruptedException {
+    public static void createNewClaimCyrillicSymbols() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -94,12 +84,23 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Тест1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(click());
-        ClaimCreationAndEditingScreen.okButton.perform(click());
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+    }
+
+    public static void closeTestClaim(){
+        ClaimsScreen.editStatusButton.perform(click());
+        ClaimsScreen.toExecuteStatusButton.perform(click());
+        ClaimsScreen.commentField.perform(replaceText("Эту притензию можно удалить, она тестовая"));
+        ClaimsScreen.okButton.perform(click());
+    }
+
+    public static void closeEditedTestClaim(){
+        ClaimsScreen.editStatusButton.perform(click());
+        ClaimsScreen.cancelStatusButton.perform(click());
     }
 }
 

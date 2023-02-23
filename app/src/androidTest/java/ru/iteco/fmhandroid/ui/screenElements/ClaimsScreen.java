@@ -18,7 +18,14 @@ public class ClaimsScreen {
     public static ViewInteraction buttonToAddComment = onView(withId(R.id.add_comment_image_button));
     public static ViewInteraction titleOfClaimsBlock = onView(withText("Claims"));
     public static ViewInteraction addNewClaimButton = onView(withId(R.id.add_new_claim_material_button));
-    public static ViewInteraction firstClaimCard = onView(withIndex(withId(R.id.claim_list_card), 0));
     public static ViewInteraction filtersButton = onView(withId(R.id.filters_material_button));
     public static ViewInteraction filterWindowTitle = onView(withId(R.id.claim_filter_dialog_title));
+    public static ViewInteraction editStatusButton = onView(withId(R.id.status_processing_image_button));
+    public static ViewInteraction toExecuteStatusButton = onView(withText("To execute"));
+    public static ViewInteraction throwOffStatusButton = onView(withText("Throw off"));
+    public static ViewInteraction cancelStatusButton = onView(withText("Cancel"));
+    public static ViewInteraction commentField = onView(withId(R.id.editText));
+    public static ViewInteraction okButton = onView(withText("OK"));
+    public static ViewInteraction firstClaimCard = onView(withIndex(withId(R.id.claim_list_card), 0));
+    public static ViewInteraction firstClaimTopicText = onView(withIndex(withText("Topic"), 0));
 }

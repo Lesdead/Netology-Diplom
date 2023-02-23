@@ -4,17 +4,18 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static ru.iteco.fmhandroid.ui.helper.MainHelper.nestedScrollTo;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -25,11 +26,7 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-
-// Из-за отсутствия возможности создать новую притензию (баг приложения)
-// Не получается запустить все тесты сразу, они мешают друг другу
-// Но запускаются и проходят по одиночке
-public class ClaimsListScreen {
+public class ClaimsListTests {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -53,48 +50,69 @@ public class ClaimsListScreen {
     }
 
     @Test
+    @DisplayName("Отображение экрана - притензии")
+    @Description("После открытия меню с притензиями появляется список притензий созданный ранее")
     public void shouldClaimsMenuDisplayed() throws InterruptedException {
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
     }
 
     @Test
+    @DisplayName("Раскрытие первой притензии")
+    @Description("Разворачивание конкретной притензии с помощью кнопки-стрелочки")
     public void shouldClaimDisplayed() throws InterruptedException {
-        ClaimsSteps.openFirstClaim();
-        ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
+        ClaimsSteps.createNewClaim();
+        ClaimsScreen.firstClaimCard.perform(click());
+        ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
+        ClaimsSteps.closeTestClaim();
     }
 
     @Test
+    @DisplayName("Сворачивание раскрытой притензии")
+    @Description("В меню просмотра притензии проверить кнопку возрата к списку притензий")
     public void shouldOpenClaimClosing() throws InterruptedException {
-        ClaimsSteps.openFirstClaim();
-        ClaimsScreen.closeClaim.perform(nestedScrollTo());
+        ClaimsSteps.createNewClaim();
+        ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.closeClaim.perform(click());
         ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
+        ClaimsScreen.firstClaimTopicText.perform(click());
+        ClaimsSteps.closeTestClaim();
     }
 
     @Test
+    @DisplayName("Создание валидного комментария к притензии")
+    @Description("Создание коментария к притензии с валидным значением")
     public void shouldCreateValidComment() throws InterruptedException {
-        ClaimsSteps.openFirstClaim();
+        ClaimsSteps.createNewClaim();
+        ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
         ClaimsScreen.buttonToAddComment.perform(click());
         CommentScreen.commentTestInputEditText.perform(replaceText(comment));
         CommentScreen.saveButton.perform(click());
         ClaimsScreen.newTestComment(comment);
-        Thread.sleep(1000);
+        ClaimsSteps.closeTestClaim();
     }
 
     @Test
+    @DisplayName("Смена заголовка притензии")
+    @Description("Редактирование уже созданной притензии и внесение в нее новой валидной информации в поле Title")
     public void shouldChangeTitleOfClaim() throws InterruptedException{
-        ClaimsSteps.openFirstClaim();
-        ClaimsScreen.editClaimButton.perform(nestedScrollTo());
+        ClaimsSteps.createNewClaim();
+        ClaimsScreen.firstClaimCard.perform(click());
+        ClaimsScreen.editStatusButton.perform(click());
+        ClaimsScreen.throwOffStatusButton.perform(click());
+        ClaimsScreen.commentField.perform(replaceText(comment));
+        ClaimsScreen.okButton.perform(click());
         ClaimsScreen.editClaimButton.perform(click());
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(title));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
-        ClaimsScreen.editClaimButton.perform(nestedScrollTo());
         ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
+        ClaimsSteps.closeEditedTestClaim();
     }
 
     @Test
+    @DisplayName("Открытие фильтра притензий")
+    @Description("Проверка открытия окна с фильтрами для списка притензий")
     public void shouldOpenFilterClaims()throws InterruptedException{
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.filtersButton.perform(click());

@@ -3,16 +3,17 @@ package ru.iteco.fmhandroid.ui.tests.claimsTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -20,10 +21,9 @@ import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
-
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class NewClaimScreen {
+public class NewClaimTests {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -41,13 +41,18 @@ public class NewClaimScreen {
     }
 
     @Test
-    // Не работает  (Баг)
+    @DisplayName("Создание притензии")
+    @Description("Создание притензии и заполнение полей валидными значениями")
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
-//        ClaimsScreen.firstClaimCard.check(matches(withText("test1")));
+        ClaimsScreen.firstClaimCard.perform(click());
+        ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
+        ClaimsSteps.closeTestClaim();
     }
 
     @Test
+    @DisplayName("Отмена создания притензии")
+    @Description("Нажатие на кнопку отмены притензии")
     public void shouldCancelButton() throws InterruptedException {
         ClaimsSteps.openCreateNewClaimMenu();
         ClaimCreationAndEditingScreen.cancelButton.perform(click());
@@ -56,15 +61,20 @@ public class NewClaimScreen {
     }
 
     @Test
+    @DisplayName("Оставить поле Title пустым")
+    @Description("Оставить поле Title пустым и попробывать создать притензию")
     public void shouldLeaveTitleEmpty() throws InterruptedException {
         ClaimsSteps.createNewClaimWithoutTitle();
         ClaimCreationAndEditingScreen.fillEmptyFieldsMessage.check(matches(isDisplayed()));
     }
 
     @Test
-    // Не работает. По причине того что нельзя создать притензию (Баг) см. тест - (shouldAddNewClaim)
+    @DisplayName("Ввод данных на кириллице")
+    @Description("Ввод в поле Title текста на кирилице")
     public void shouldEnterCyrillicSymbols() throws InterruptedException {
-        ClaimsSteps.createNewClaimNoEnglishSymbols();
-        // ClaimsScreen.firstClaimCard.check(matches(withText("Тест1")));
+        ClaimsSteps.createNewClaimCyrillicSymbols();
+        ClaimsScreen.firstClaimCard.perform(click());
+        ClaimsScreen.titleTextOfClaim.check(matches(withText("Тест1")));
+        ClaimsSteps.closeTestClaim();
     }
 }
