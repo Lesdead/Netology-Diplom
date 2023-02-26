@@ -8,6 +8,7 @@ import androidx.test.filters.LargeTest;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
@@ -23,12 +24,14 @@ public class ClaimsSteps {
             new ActivityScenarioRule<>(AppActivity.class);
 
     public static void enterClaimsMenu() throws InterruptedException {
+        Allure.step("Вход в меню - Притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
     }
 
     public static void openFirstClaim() throws InterruptedException {
+        Allure.step("Открытие первой притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -37,6 +40,7 @@ public class ClaimsSteps {
     }
 
     public static void openCreateNewClaimMenu() throws InterruptedException {
+        Allure.step("Открыть экран создания притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -44,6 +48,7 @@ public class ClaimsSteps {
     }
 
     public static void createNewClaim() throws InterruptedException {
+        Allure.step("Создание валидной притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -60,6 +65,7 @@ public class ClaimsSteps {
     }
 
     public static void createNewClaimWithoutTitle() throws InterruptedException {
+        Allure.step("Создание притензии без заголовка");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -76,6 +82,7 @@ public class ClaimsSteps {
     }
 
     public static void createNewClaimCyrillicSymbols() throws InterruptedException {
+        Allure.step("Создание притензии на кириллице");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
@@ -92,6 +99,7 @@ public class ClaimsSteps {
     }
 
     public static void closeTestClaim(){
+        Allure.step("Удаление тестовой притензии");
         ClaimsScreen.editStatusButton.perform(click());
         ClaimsScreen.toExecuteStatusButton.perform(click());
         ClaimsScreen.commentField.perform(replaceText("Эту притензию можно удалить, она тестовая"));
@@ -99,6 +107,7 @@ public class ClaimsSteps {
     }
 
     public static void closeEditedTestClaim(){
+        Allure.step("Закрытие экрана создания притензии");
         ClaimsScreen.editStatusButton.perform(click());
         ClaimsScreen.cancelStatusButton.perform(click());
     }

@@ -7,6 +7,7 @@ import androidx.test.filters.LargeTest;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 
@@ -19,6 +20,7 @@ public class AboutSteps {
             new ActivityScenarioRule<>(AppActivity.class);
 
     public static void enterAboutMenu() throws InterruptedException {
+        Allure.step("Вход в меню - О нас");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.aboutOfMenu.perform(click());

@@ -8,6 +8,7 @@ import androidx.test.filters.LargeTest;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
@@ -21,6 +22,7 @@ public class AuthScreenSteps {
             new ActivityScenarioRule<>(AppActivity.class);
 
     public static void ValidDataEnter() throws InterruptedException {
+        Allure.step("Ввод валидных данных логина и пароля");
         Thread.sleep(5000);
         AuthorizationScreen.loginInput.perform(replaceText(DataHelper.validLoginStep));
         AuthorizationScreen.passwordInput.perform(replaceText(DataHelper.validPassStep));

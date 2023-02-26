@@ -10,6 +10,7 @@ import androidx.test.filters.LargeTest;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 
@@ -20,6 +21,7 @@ public class MainMenuSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule = new ActivityScenarioRule<>(AppActivity.class);
 
     public static void enterMainMenuButton(){
+        Allure.step("Нажатие на кнопку главного меню");
         ViewInteraction enterMainMenuButton = onView(withId(R.id.main_menu_image_button));
         enterMainMenuButton.perform(click());
     }
