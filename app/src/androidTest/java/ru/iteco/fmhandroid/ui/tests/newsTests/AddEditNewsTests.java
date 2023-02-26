@@ -7,7 +7,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-import static ru.iteco.fmhandroid.ui.steps.NewsSteps.title;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -19,6 +18,7 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;
@@ -62,7 +62,7 @@ public class AddEditNewsTests {
     public void shouldCreateDeleteNews() throws InterruptedException {
         NewsSteps.createValidNews();
         NewsSteps.deleteTestNews();
-        NewsScreen.newsListRecycler.check(matches(not(hasDescendant(withText(NewsSteps.title)))));
+        NewsScreen.newsListRecycler.check(matches(not(hasDescendant(withText(DataHelper.title)))));
     }
 
     @Test
@@ -71,7 +71,7 @@ public class AddEditNewsTests {
     public void shouldNewNewsWithoutCategory() throws InterruptedException {
         NewsSteps.openCreateNewsScreen();
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
-        NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(title));
+        NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(DataHelper.title));
         NewsCreationEditingScreen.dateInputOfNews.perform(click());
         NewsCreationEditingScreen.okButton.perform(click());
         NewsCreationEditingScreen.timeInputOfNews.perform(click());
@@ -86,12 +86,12 @@ public class AddEditNewsTests {
     public void shouldNewNewsCyrillicTitle() throws InterruptedException {
         NewsSteps.openCreateNewsScreen();
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
-        NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(NewsSteps.cyrillicTitle));
+        NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(DataHelper.cyrillicTitle));
         NewsCreationEditingScreen.dateInputOfNews.perform(click());
         NewsCreationEditingScreen.okButton.perform(click());
         NewsCreationEditingScreen.timeInputOfNews.perform(click());
         NewsCreationEditingScreen.okButton.perform(click());
-        NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(NewsSteps.description));
+        NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText(DataHelper.description));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
         NewsSteps.useNewsFilter();
         NewsScreen.sortButton.perform(click());
@@ -109,7 +109,7 @@ public class AddEditNewsTests {
         NewsScreen.editNewsButton.perform(click());
         NewsSteps.useNewsFilter();
         NewsScreen.sortButton.perform(click());
-        NewsScreen.editNewsButton(title).perform(click());
+        NewsScreen.editNewsButton(DataHelper.title).perform(click());
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("День рождения"));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
         NewsScreen.newTestNews.check(matches(isDisplayed()));
@@ -126,11 +126,11 @@ public class AddEditNewsTests {
         NewsScreen.editNewsButton.perform(click());
         NewsSteps.useNewsFilter();
         NewsScreen.sortButton.perform(click());
-        NewsScreen.editNewsButton(title).perform(click());
+        NewsScreen.editNewsButton(DataHelper.title).perform(click());
         NewsCreationEditingScreen.descriptionTextInputOfNews.perform(replaceText("qwerty"));
         NewsCreationEditingScreen.saveButtonOfNews.perform(click());
-        NewsScreen.openDescNewsButton(title).perform(click());
-        NewsScreen.openDescNewsField(title).check(matches(isDisplayed()));
+        NewsScreen.openDescNewsButton(DataHelper.title).perform(click());
+        NewsScreen.openDescNewsField(DataHelper.title).check(matches(isDisplayed()));
         NewsSteps.deleteTestNews();
     }
 }

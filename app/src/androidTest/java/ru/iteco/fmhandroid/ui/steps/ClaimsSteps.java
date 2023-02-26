@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
@@ -20,7 +21,6 @@ public class ClaimsSteps {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-    static String oldDate = "14.07.1789";
 
     public static void enterClaimsMenu() throws InterruptedException {
         AuthScreenSteps.ValidDataEnter();
@@ -52,7 +52,7 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(DataHelper.oldDateClaim));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
@@ -68,7 +68,7 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(""));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(DataHelper.oldDateClaim));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
@@ -84,7 +84,7 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Тест1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
-        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(oldDate));
+        ClaimCreationAndEditingScreen.dateInPlanOfClaim.perform(replaceText(DataHelper.oldDateClaim));
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));

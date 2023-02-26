@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.ui.helper;
+package ru.iteco.fmhandroid.ui.DataHelper;
 
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
@@ -18,7 +18,19 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
 
-public class MainHelper {
+public class DataHelper {
+
+    static int titleNumber = (int) ( Math.random() * 1000 );
+    public static String title = "testTITLE" + titleNumber;
+
+    static int cyrlNumber = (int) ( Math.random() * 1000 );
+    public static String cyrillicTitle = "testЗАГОЛОВОК" + cyrlNumber;
+
+    static int descNumber = (int) ( Math.random() * 1000 );
+    public static String description = "testDESC" + descNumber;
+
+    static int comNumber = (int) ( Math.random() * 1000 );
+    public static String comment = "testComm" + comNumber;
 
     public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
         return new TypeSafeMatcher<View>() {
@@ -37,8 +49,6 @@ public class MainHelper {
             }
         };
     }
-
-
 
     public static ViewAction nestedScrollTo() {
         return new ViewAction() {
@@ -99,4 +109,12 @@ public class MainHelper {
     private static ViewParent findParent(ViewParent view) {
         return view.getParent();
     }
+
+    public static String validLoginStep = "login2";
+    public static String validPassStep = "password2";
+    public static String noValidLoginStep = "login1";
+    public static String noValidPassStep = "password1";
+    public static String mainTextScreen = "Хоспис в своем истинном понимании - это творчество";
+    public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
+    public static String oldDateClaim = "14.07.1789";
 }

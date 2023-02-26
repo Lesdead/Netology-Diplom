@@ -5,7 +5,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.helper.MainHelper.withIndex;
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;

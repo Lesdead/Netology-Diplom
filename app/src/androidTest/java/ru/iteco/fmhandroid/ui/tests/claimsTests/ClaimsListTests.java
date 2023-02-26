@@ -5,7 +5,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.helper.MainHelper.nestedScrollTo;
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.nestedScrollTo;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -17,6 +17,7 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
@@ -31,12 +32,6 @@ public class ClaimsListTests {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-
-    int titleNumber = (int) ( Math.random() * 1000 );
-    String title = "testNum" + titleNumber;
-
-    int comNumber = (int) ( Math.random() * 1000 );
-    String comment = "testComm" + comNumber;
 
     @Before
     public void logInCheck() {
@@ -87,9 +82,9 @@ public class ClaimsListTests {
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
         ClaimsScreen.buttonToAddComment.perform(click());
-        CommentScreen.commentTestInputEditText.perform(replaceText(comment));
+        CommentScreen.commentTestInputEditText.perform(replaceText(DataHelper.comment));
         CommentScreen.saveButton.perform(click());
-        ClaimsScreen.newTestComment(comment);
+        ClaimsScreen.newTestComment(DataHelper.comment);
         ClaimsSteps.closeTestClaim();
     }
 
@@ -101,10 +96,10 @@ public class ClaimsListTests {
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.editStatusButton.perform(click());
         ClaimsScreen.throwOffStatusButton.perform(click());
-        ClaimsScreen.commentField.perform(replaceText(comment));
+        ClaimsScreen.commentField.perform(replaceText(DataHelper.comment));
         ClaimsScreen.okButton.perform(click());
         ClaimsScreen.editClaimButton.perform(click());
-        ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(title));
+        ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(DataHelper.title));
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
         ClaimsSteps.closeEditedTestClaim();
