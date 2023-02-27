@@ -77,4 +77,6 @@ public class NewClaimTests {
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Тест1")));
         ClaimsSteps.closeTestClaim();
     }
+
+
 }

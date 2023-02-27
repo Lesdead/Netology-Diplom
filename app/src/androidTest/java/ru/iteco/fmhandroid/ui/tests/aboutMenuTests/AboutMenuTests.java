@@ -19,7 +19,7 @@ import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 
-@LargeTest
+@LargeTest 
 @RunWith(AllureAndroidJUnit4.class)
 public class AboutMenuTests {
 

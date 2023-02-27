@@ -18,19 +18,14 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
 
+import java.util.UUID;
+
 public class DataHelper {
 
-    static int titleNumber = (int) ( Math.random() * 1000 );
-    public static String title = "testTITLE" + titleNumber;
-
-    static int cyrlNumber = (int) ( Math.random() * 1000 );
-    public static String cyrillicTitle = "testЗАГОЛОВОК" + cyrlNumber;
-
-    static int descNumber = (int) ( Math.random() * 1000 );
-    public static String description = "testDESC" + descNumber;
-
-    static int comNumber = (int) ( Math.random() * 1000 );
-    public static String comment = "testComm" + comNumber;
+    public static String title = "testTit-" + UUID.randomUUID().toString().substring(0, 4);
+    public static String cyrillicTitle = "testCyrT-" + UUID.randomUUID().toString().substring(0, 4);
+    public static String description = "testDes-" + UUID.randomUUID().toString().substring(0, 4);
+    public static String comment = "testComm-" + UUID.randomUUID().toString().substring(0, 4);
 
     public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
         return new TypeSafeMatcher<View>() {
