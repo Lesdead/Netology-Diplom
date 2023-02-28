@@ -3,6 +3,8 @@ package ru.iteco.fmhandroid.ui.steps;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import org.junit.Rule;
@@ -36,7 +38,7 @@ public class ClaimsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.firstClaimCard.perform(click());
-        Thread.sleep(500);
+        needWait(500);
     }
 
     public static void openCreateNewClaimMenu() throws InterruptedException {
@@ -53,7 +55,7 @@ public class ClaimsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        Thread.sleep(500);
+        needWait(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -70,7 +72,7 @@ public class ClaimsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        Thread.sleep(500);
+        needWait(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(""));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -87,7 +89,7 @@ public class ClaimsSteps {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        Thread.sleep(500);
+        needWait(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Тест1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());

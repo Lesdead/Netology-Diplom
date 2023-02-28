@@ -4,6 +4,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
@@ -31,7 +33,7 @@ public class NewsTests {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(7000);
+            needWait(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());

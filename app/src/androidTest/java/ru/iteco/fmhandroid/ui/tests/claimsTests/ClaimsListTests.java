@@ -5,6 +5,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.nestedScrollTo;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -36,7 +37,7 @@ public class ClaimsListTests {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(7000);
+            needWait(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());

@@ -3,6 +3,8 @@ package ru.iteco.fmhandroid.ui.steps;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import org.junit.Rule;
@@ -21,13 +23,13 @@ public class AuthScreenSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    public static void ValidDataEnter() throws InterruptedException {
+    public static void ValidDataEnter(){
         Allure.step("Ввод валидных данных логина и пароля");
-        Thread.sleep(5000);
+        needWait(5000);
         AuthorizationScreen.loginInput.perform(replaceText(DataHelper.validLoginStep));
         AuthorizationScreen.passwordInput.perform(replaceText(DataHelper.validPassStep));
         AuthorizationScreen.signInButton.perform(click());
-        Thread.sleep(2000);
+        needWait(2000);
     }
 }
 

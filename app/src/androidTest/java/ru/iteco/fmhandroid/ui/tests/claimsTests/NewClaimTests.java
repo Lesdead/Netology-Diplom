@@ -5,6 +5,8 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
@@ -32,7 +34,7 @@ public class NewClaimTests {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(7000);
+            needWait(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
@@ -45,6 +47,11 @@ public class NewClaimTests {
     @Description("Создание притензии и заполнение полей валидными значениями")
     public void shouldAddNewClaim() throws InterruptedException {
         ClaimsSteps.createNewClaim();
+        MainScreen.menuButton.perform(click());
+        needWait(1000);
+        MainScreen.menuOfMenu.perform(click());
+        needWait(3000);
+        MainScreen.allClaimsButton.perform(click());
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
         ClaimsSteps.closeTestClaim();

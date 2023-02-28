@@ -1,7 +1,9 @@
 package ru.iteco.fmhandroid.ui.DataHelper;
 
+import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 
 import android.view.View;
@@ -112,4 +114,29 @@ public class DataHelper {
     public static String mainTextScreen = "Хоспис в своем истинном понимании - это творчество";
     public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
     public static String oldDateClaim = "14.07.1789";
+
+
+
+    public static ViewAction waitFor(final long millis) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isRoot();
+            }
+
+            @Override
+            public String getDescription() {
+                return "Wait for " + millis + " milliseconds.";
+            }
+
+            @Override
+            public void perform(UiController uiController, final View view) {
+                uiController.loopMainThreadForAtLeast(millis);
+            }
+        };
+    }
+
+    public static void needWait(final long millis) {
+        onView(isRoot()).perform(waitFor(millis));
+    }
 }

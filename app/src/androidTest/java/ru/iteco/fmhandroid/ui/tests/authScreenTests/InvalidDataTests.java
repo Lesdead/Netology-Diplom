@@ -7,6 +7,8 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -34,7 +36,7 @@ public class InvalidDataTests {
     @Before
     public void logInCheck() {
         try {
-            Thread.sleep(7000);
+            needWait(5000);
             AuthorizationScreen.authorization.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());

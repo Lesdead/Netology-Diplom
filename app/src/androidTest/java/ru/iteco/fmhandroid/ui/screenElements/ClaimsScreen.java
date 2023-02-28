@@ -26,6 +26,6 @@ public class ClaimsScreen {
     public static ViewInteraction cancelStatusButton = onView(withText("Cancel"));
     public static ViewInteraction commentField = onView(withId(R.id.editText));
     public static ViewInteraction okButton = onView(withText("OK"));
-    public static ViewInteraction firstClaimCard = onView(withIndex(withId(R.id.claim_list_card), 0));
     public static ViewInteraction firstClaimTopicText = onView(withIndex(withText("Topic"), 0));
+    public static ViewInteraction firstClaimCard = onView(withIndex(withId(R.id.title_material_text_view), 0));
 }
