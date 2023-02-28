@@ -18,7 +18,8 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class MainMenuSteps {
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule = new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(AppActivity.class);
 
     public static void enterMainMenuButton(){
         Allure.step("Нажатие на кнопку главного меню");

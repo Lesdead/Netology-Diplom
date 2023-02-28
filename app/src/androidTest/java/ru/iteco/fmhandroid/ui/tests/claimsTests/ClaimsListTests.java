@@ -48,7 +48,7 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Отображение экрана - притензии")
     @Description("После открытия меню с притензиями появляется список притензий созданный ранее")
-    public void shouldClaimsMenuDisplayed() throws InterruptedException {
+    public void shouldClaimsMenuDisplayed(){
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
     }
@@ -56,7 +56,7 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Раскрытие первой притензии")
     @Description("Разворачивание конкретной притензии с помощью кнопки-стрелочки")
-    public void shouldClaimDisplayed() throws InterruptedException {
+    public void shouldClaimDisplayed(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
@@ -66,7 +66,7 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Сворачивание раскрытой притензии")
     @Description("В меню просмотра притензии проверить кнопку возрата к списку притензий")
-    public void shouldOpenClaimClosing() throws InterruptedException {
+    public void shouldOpenClaimClosing(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.closeClaim.perform(click());
@@ -78,7 +78,7 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Создание валидного комментария к притензии")
     @Description("Создание коментария к притензии с валидным значением")
-    public void shouldCreateValidComment() throws InterruptedException {
+    public void shouldCreateValidComment(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
@@ -92,7 +92,7 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Смена заголовка притензии")
     @Description("Редактирование уже созданной притензии и внесение в нее новой валидной информации в поле Title")
-    public void shouldChangeTitleOfClaim() throws InterruptedException{
+    public void shouldChangeTitleOfClaim(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.editStatusButton.perform(click());
@@ -109,14 +109,14 @@ public class ClaimsListTests {
     @Test
     @DisplayName("Открытие фильтра притензий")
     @Description("Проверка открытия окна с фильтрами для списка притензий")
-    public void shouldOpenFilterClaims()throws InterruptedException{
+    public void shouldOpenFilterClaims(){
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.filtersButton.perform(click());
         ClaimsScreen.filterWindowTitle.check(matches(isDisplayed()));
     }
 
     @Test
-    public void testUUID() throws InterruptedException {
+    public void testUUID(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());

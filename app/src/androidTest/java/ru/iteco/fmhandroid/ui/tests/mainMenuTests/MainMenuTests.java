@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests.mainMenuTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -26,7 +25,8 @@ import ru.iteco.fmhandroid.ui.steps.MainMenuSteps;
 public class MainMenuTests {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule = new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
     public void logInCheck() {
@@ -42,7 +42,7 @@ public class MainMenuTests {
     @Test
     @DisplayName("Отображение экрана - Главное меню")
     @Description("Проверка кнопки main - Главное меню")
-    public void shouldMainMenuView() throws InterruptedException {
+    public void shouldMainMenuView(){
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.aboutOfMenu.check(matches(isDisplayed()));
@@ -51,7 +51,7 @@ public class MainMenuTests {
     @Test
     @DisplayName("Нажатие на кнопку - News")
     @Description("В главном меню открыть вкладку news и убедиться что новости в ленте присутствуют")
-    public void shouldNewsListOpen() throws InterruptedException {
+    public void shouldNewsListOpen(){
         AuthScreenSteps.ValidDataEnter();
         MainScreen.buttonToExpandOrHideNewsPart.perform(click());
         MainScreen.containerListForNews.check(matches(isDisplayed()));

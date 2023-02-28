@@ -19,7 +19,7 @@ public class CitationSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    public static void enterCitationsMenu() throws InterruptedException {
+    public static void enterCitationsMenu(){
         Allure.step("Вход в меню цитат");
         AuthScreenSteps.ValidDataEnter();
         MainScreen.goToCitationBlockButton.perform(click());

@@ -4,7 +4,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -45,7 +44,7 @@ public class NewClaimTests {
     @Test
     @DisplayName("Создание притензии")
     @Description("Создание притензии и заполнение полей валидными значениями")
-    public void shouldAddNewClaim() throws InterruptedException {
+    public void shouldAddNewClaim(){
         ClaimsSteps.createNewClaim();
         MainScreen.menuButton.perform(click());
         needWait(1000);
@@ -60,7 +59,7 @@ public class NewClaimTests {
     @Test
     @DisplayName("Отмена создания притензии")
     @Description("Нажатие на кнопку отмены притензии")
-    public void shouldCancelButton() throws InterruptedException {
+    public void shouldCancelButton(){
         ClaimsSteps.openCreateNewClaimMenu();
         ClaimCreationAndEditingScreen.cancelButton.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
@@ -70,7 +69,7 @@ public class NewClaimTests {
     @Test
     @DisplayName("Оставить поле Title пустым")
     @Description("Оставить поле Title пустым и попробывать создать притензию")
-    public void shouldLeaveTitleEmpty() throws InterruptedException {
+    public void shouldLeaveTitleEmpty(){
         ClaimsSteps.createNewClaimWithoutTitle();
         ClaimCreationAndEditingScreen.fillEmptyFieldsMessage.check(matches(isDisplayed()));
     }
@@ -78,7 +77,7 @@ public class NewClaimTests {
     @Test
     @DisplayName("Ввод данных на кириллице")
     @Description("Ввод в поле Title текста на кирилице")
-    public void shouldEnterCyrillicSymbols() throws InterruptedException {
+    public void shouldEnterCyrillicSymbols(){
         ClaimsSteps.createNewClaimCyrillicSymbols();
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Тест1")));

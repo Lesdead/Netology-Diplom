@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests.aboutMenuTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -43,7 +42,7 @@ public class AboutMenuTests {
     @Test
     @DisplayName("Отображение экрана - About")
     @Description("При нажатии на кнопку About  в меню серху открывается информация о приложении")
-    public void shouldAboutMenuDisplayed() throws InterruptedException {
+    public void shouldAboutMenuDisplayed(){
         AboutSteps.enterAboutMenu();
         AboutAppScreen.versionValue.check(matches(isDisplayed()));
     }

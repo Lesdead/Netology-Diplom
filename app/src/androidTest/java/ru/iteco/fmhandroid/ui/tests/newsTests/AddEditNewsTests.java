@@ -7,7 +7,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -50,7 +49,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Создание валидной новости")
     @Description("При создании новой статьи заполнение всех полей валидными значениями")
-    public void shouldNewValidNewsCreated() throws InterruptedException {
+    public void shouldNewValidNewsCreated(){
         NewsSteps.createValidNews();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
@@ -61,7 +60,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Удаление статьи")
     @Description("Создание, а затем удаление созданной ранее новости - проверка удаления")
-    public void shouldCreateDeleteNews() throws InterruptedException {
+    public void shouldCreateDeleteNews(){
         NewsSteps.createValidNews();
         NewsSteps.deleteTestNews();
         NewsScreen.newsListRecycler.check(matches(not(hasDescendant(withText(DataHelper.title)))));
@@ -70,7 +69,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Создание ноаости без категории")
     @Description("Создание статьи без заполнения поля -Category")
-    public void shouldNewNewsWithoutCategory() throws InterruptedException {
+    public void shouldNewNewsWithoutCategory(){
         NewsSteps.openCreateNewsScreen();
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
         NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(DataHelper.title));
@@ -85,7 +84,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Создание новости с символами на кириллице")
     @Description("Заполнение поля Title текстом на кирилице")
-    public void shouldNewNewsCyrillicTitle() throws InterruptedException {
+    public void shouldNewNewsCyrillicTitle(){
         NewsSteps.openCreateNewsScreen();
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
         NewsCreationEditingScreen.titleTextInputOfNews.perform(replaceText(DataHelper.cyrillicTitle));
@@ -104,7 +103,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Смена категории статьи")
     @Description("В уже созданной статье поменять значение в поле Category на одно из предложенных")
-    public void shouldCreateAndChangeNewsCategory() throws InterruptedException {
+    public void shouldCreateAndChangeNewsCategory(){
         NewsSteps.createValidNews();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
@@ -121,7 +120,7 @@ public class AddEditNewsTests {
     @Test
     @DisplayName("Смена описания новости")
     @Description("В уже созданной статье поменять текст в поле Description на другой (qwerty)")
-    public void shouldCreateAndChangeDescriptionData() throws InterruptedException {
+    public void shouldCreateAndChangeDescriptionData(){
         NewsSteps.createValidNews();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());

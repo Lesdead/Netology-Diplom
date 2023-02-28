@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests.newsTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -44,7 +43,7 @@ public class NewsTests {
     @Test
     @DisplayName("Отображение экрана - Новости")
     @Description("После открытия меню с новостями появляется лента с новостями созданными ранее")
-    public void shouldNewsMenuScreen() throws InterruptedException {
+    public void shouldNewsMenuScreen(){
         NewsSteps.enterNewsMenu();
         NewsScreen.titleOfNewsBlock.check(matches(isDisplayed()));
     }
@@ -52,7 +51,7 @@ public class NewsTests {
     @Test
     @DisplayName("Открытие Панели инструментов")
     @Description("Проверка что после нажатия на кнопку редактирования, лента новостей меняется и появляется возможность удалать, создавать или редактировать каждую новость")
-    public void shouldControlPanelOpened() throws InterruptedException {
+    public void shouldControlPanelOpened(){
         NewsSteps.openControlPanel();
         NewsScreen.addNewsButton.check(matches(isDisplayed()));
     }
@@ -60,7 +59,7 @@ public class NewsTests {
     @Test
     @DisplayName("Кнопка создания новости")
     @Description("Проверка кнопки создания статьи (+)")
-    public void shouldAddNewsButton() throws InterruptedException {
+    public void shouldAddNewsButton(){
         NewsSteps.openCreateNewsScreen();
         NewsCreationEditingScreen.titleCreatingWindow.check(matches(isDisplayed()));
     }

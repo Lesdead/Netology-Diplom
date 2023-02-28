@@ -19,7 +19,6 @@ import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
-
 import java.util.UUID;
 
 public class DataHelper {
@@ -114,8 +113,6 @@ public class DataHelper {
     public static String mainTextScreen = "Хоспис в своем истинном понимании - это творчество";
     public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
     public static String oldDateClaim = "14.07.1789";
-
-
 
     public static ViewAction waitFor(final long millis) {
         return new ViewAction() {

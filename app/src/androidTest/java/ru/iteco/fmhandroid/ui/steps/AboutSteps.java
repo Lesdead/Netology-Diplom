@@ -19,7 +19,7 @@ public class AboutSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    public static void enterAboutMenu() throws InterruptedException {
+    public static void enterAboutMenu(){
         Allure.step("Вход в меню - О нас");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();

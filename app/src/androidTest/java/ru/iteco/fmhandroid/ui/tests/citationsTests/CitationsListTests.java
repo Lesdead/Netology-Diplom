@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests.citationsTests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -43,7 +42,7 @@ public class CitationsListTests {
     @Test
     @DisplayName("Отображение экрана - Цитаты")
     @Description("При нажатии на кнопку в виде бабочки (тематические цитаты) открывается лента с цитатами")
-    public void shouldCitationMenuIsDisplayed() throws InterruptedException {
+    public void shouldCitationMenuIsDisplayed(){
         CitationSteps.enterCitationsMenu();
         CitationsScreen.secondMissionTitleValue.check(matches(isDisplayed()));
     }
@@ -51,10 +50,10 @@ public class CitationsListTests {
     @Test
     @DisplayName("Отображение открытия цитаты")
     @Description("При разворачивании второй цитаты отображается ее содержание")
-    public void shouldOpenSecondCitation() throws InterruptedException {
+    public void shouldOpenSecondCitation(){
         CitationSteps.enterCitationsMenu();
         CitationsScreen.secondMissionTitleValue.perform(click());
-        Thread.sleep(5000);
+        needWait(5000);
         CitationsScreen.secondCitationOpenButton.check(matches(isDisplayed()));
     }
 }

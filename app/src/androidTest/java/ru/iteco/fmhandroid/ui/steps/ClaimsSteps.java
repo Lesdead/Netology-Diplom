@@ -2,7 +2,6 @@ package ru.iteco.fmhandroid.ui.steps;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -25,14 +24,14 @@ public class ClaimsSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    public static void enterClaimsMenu() throws InterruptedException {
+    public static void enterClaimsMenu(){
         Allure.step("Вход в меню - Притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
     }
 
-    public static void openFirstClaim() throws InterruptedException {
+    public static void openFirstClaim(){
         Allure.step("Открытие первой притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -41,7 +40,7 @@ public class ClaimsSteps {
         needWait(500);
     }
 
-    public static void openCreateNewClaimMenu() throws InterruptedException {
+    public static void openCreateNewClaimMenu(){
         Allure.step("Открыть экран создания притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -49,7 +48,7 @@ public class ClaimsSteps {
         ClaimsScreen.addNewClaimButton.perform(click());
     }
 
-    public static void createNewClaim() throws InterruptedException {
+    public static void createNewClaim(){
         Allure.step("Создание валидной притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -66,7 +65,7 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 
-    public static void createNewClaimWithoutTitle() throws InterruptedException {
+    public static void createNewClaimWithoutTitle(){
         Allure.step("Создание притензии без заголовка");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
@@ -83,7 +82,7 @@ public class ClaimsSteps {
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
     }
 
-    public static void createNewClaimCyrillicSymbols() throws InterruptedException {
+    public static void createNewClaimCyrillicSymbols(){
         Allure.step("Создание притензии на кириллице");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();

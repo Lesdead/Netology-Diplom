@@ -4,7 +4,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -43,15 +42,15 @@ public class ValidDataTests {
     @Test
     @DisplayName("Отображение экрана авторизации")
     @Description("При запуске приложения открывается экран с поллями воода логина и пароля")
-    public void shouldLoginScreenDisplayed() throws InterruptedException {
-        Thread.sleep(3000);
+    public void shouldLoginScreenDisplayed(){
+        needWait(3000);
         AuthorizationScreen.authorization.check(matches(withText("Authorization")));
     }
 
     @Test
     @DisplayName("Ввод валидных значений авторизации")
     @Description("Вход в приложение с валидными данными логина и пароля (login2)(password2)")
-    public void shouldValidDataEnter() throws InterruptedException {
+    public void shouldValidDataEnter(){
         AuthScreenSteps.ValidDataEnter();
         MainScreen.menuButton.check(matches(isDisplayed()));
     }
@@ -59,7 +58,7 @@ public class ValidDataTests {
     @Test
     @DisplayName("Выход из приложения")
     @Description("Выход из приложения путем отключения логина  (logOut)")
-    public void shouldExitApp() throws InterruptedException{
+    public void shouldExitApp(){
         AuthScreenSteps.ValidDataEnter();
         MainScreen.authorizationButton.perform(click());
         MainScreen.logOutButton.perform(click());

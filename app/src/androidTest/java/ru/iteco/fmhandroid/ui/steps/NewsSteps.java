@@ -23,26 +23,26 @@ public class NewsSteps {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    public static void enterNewsMenu() throws InterruptedException {
+    public static void enterNewsMenu(){
         Allure.step("Вход в меню - Новости");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
     }
 
-    public static void openControlPanel() throws InterruptedException {
+    public static void openControlPanel(){
         Allure.step("Открыть меню редактирования новости");
         enterNewsMenu();
         NewsScreen.editNewsButton.perform(click());
     }
 
-    public static void openCreateNewsScreen() throws InterruptedException {
+    public static void openCreateNewsScreen(){
         Allure.step("Открыть экран создания новости");
         openControlPanel();
         NewsScreen.addNewsButton.perform(click());
     }
 
-    public static void createValidNews() throws InterruptedException {
+    public static void createValidNews(){
         Allure.step("Создать валидную новость");
         openCreateNewsScreen();
         NewsCreationEditingScreen.categoryTextInputOfNews.perform(replaceText("Объявление"));
