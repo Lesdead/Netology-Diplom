@@ -5,6 +5,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import android.view.View;
 import org.hamcrest.Description;
@@ -14,12 +15,16 @@ import org.hamcrest.TypeSafeMatcher;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import androidx.core.widget.NestedScrollView;
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
+import androidx.test.espresso.util.TreeIterables;
+
 import java.util.UUID;
+import java.util.concurrent.TimeoutException;
 
 public class DataHelper {
 
@@ -114,6 +119,7 @@ public class DataHelper {
     public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
     public static String oldDateClaim = "14.07.1789";
 
+
     public static ViewAction waitFor(final long millis) {
         return new ViewAction() {
             @Override
@@ -135,5 +141,99 @@ public class DataHelper {
 
     public static void needWait(final long millis) {
         onView(isRoot()).perform(waitFor(millis));
+    }
+
+
+
+    public static ViewAction waitId(final int viewId, final long millis) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isRoot();
+            }
+
+            @Override
+            public String getDescription() {
+                return "wait for a specific view with id <" + viewId + "> during " + millis + " millis.";
+            }
+
+            @Override
+            public void perform(final UiController uiController, final View view) {
+                uiController.loopMainThreadUntilIdle();
+                final long startTime = System.currentTimeMillis();
+                final long endTime = startTime + millis;
+                final Matcher<View> viewMatcher = withId(viewId);
+
+                do {
+                    for (View child : TreeIterables.breadthFirstViewTraversal(view)) {
+                        // found view with required ID
+                        if (viewMatcher.matches(child)) {
+                            return;
+                        }
+                    }
+
+                    uiController.loopMainThreadForAtLeast(50);
+                }
+                while (System.currentTimeMillis() < endTime);
+
+                // timeout happens
+                throw new PerformException.Builder()
+                        .withActionDescription(this.getDescription())
+                        .withViewDescription(HumanReadables.describe(view))
+                        .withCause(new TimeoutException())
+                        .build();
+            }
+        };
+    }
+
+    public static Matcher<View> elementWaiting(Matcher matcher, int millis) {
+        onView(isRoot()).perform(waitForElement(matcher, millis));
+        return null;
+    }
+
+    public static ViewAction waitForElement(final Matcher matcher, final long millis) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isRoot();
+            }
+
+            @Override
+            public String getDescription() {
+                return "wait for a specific view with attribute <" + matcher + "> during " + millis + " millis.";
+            }
+
+            @Override
+            public void perform(final UiController uiController, final View view) {
+                uiController.loopMainThreadUntilIdle();
+                final long startTime = System.currentTimeMillis();
+                final long endTime = startTime + millis;
+                final Matcher<View> viewMatcher = matcher;
+
+                do {
+                    for (View child : TreeIterables.breadthFirstViewTraversal(view)) {
+                        try { // found view with required ID
+                            if (viewMatcher.matches(child)) {
+                                return;
+                            }
+                        } catch (NoMatchingViewException e) {
+                            // ignore
+                        }
+
+                        uiController.loopMainThreadForAtLeast(50);
+                    }
+
+                }
+                while (System.currentTimeMillis() < endTime);
+
+                // timeout happens
+                throw new PerformException.Builder()
+                        .withActionDescription(this.getDescription())
+                        .withViewDescription(HumanReadables.describe(view))
+                        .withCause(new TimeoutException())
+                        .build();
+            }
+        };
+
     }
 }

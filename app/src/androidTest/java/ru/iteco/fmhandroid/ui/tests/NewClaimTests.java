@@ -24,12 +24,13 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class NewClaimTests  extends BaseTest {
+public class NewClaimTests extends BaseTest {
 
     @Test
     @DisplayName("Создание притензии")
     @Description("Создание притензии и заполнение полей валидными значениями")
     public void shouldAddNewClaim(){
+//        needWait(3000);
         ClaimsSteps.createNewClaim();
         MainScreen.menuButton.perform(click());
         needWait(1000);
@@ -37,6 +38,7 @@ public class NewClaimTests  extends BaseTest {
         needWait(3000);
         MainScreen.allClaimsButton.perform(click());
         ClaimsScreen.firstClaimCard.perform(click());
+        needWait(3000);
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
         ClaimsSteps.closeTestClaim();
     }

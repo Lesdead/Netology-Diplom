@@ -13,13 +13,11 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.tests.BaseTest;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class MainMenuSteps {
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+public class MainMenuSteps extends BaseTest {
 
     public static void enterMainMenuButton(){
         Allure.step("Нажатие на кнопку главного меню");

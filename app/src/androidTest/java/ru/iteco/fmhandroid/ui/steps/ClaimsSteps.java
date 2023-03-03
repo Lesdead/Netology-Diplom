@@ -1,7 +1,9 @@
 package ru.iteco.fmhandroid.ui.steps;
 
+import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -15,14 +17,11 @@ import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
+import ru.iteco.fmhandroid.ui.tests.BaseTest;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class ClaimsSteps {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+public class ClaimsSteps extends BaseTest {
 
     public static void enterClaimsMenu(){
         Allure.step("Вход в меню - Притензии");

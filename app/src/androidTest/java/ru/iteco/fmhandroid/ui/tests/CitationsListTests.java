@@ -22,7 +22,7 @@ import ru.iteco.fmhandroid.ui.steps.CitationSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class CitationsListTests  extends BaseTest {
+public class CitationsListTests extends BaseTest {
 
     @Test
     @DisplayName("Отображение экрана - Цитаты")
@@ -37,8 +37,11 @@ public class CitationsListTests  extends BaseTest {
     @Description("При разворачивании второй цитаты отображается ее содержание")
     public void shouldOpenSecondCitation(){
         CitationSteps.enterCitationsMenu();
+        needWait(5000);
         CitationsScreen.secondMissionTitleValue.perform(click());
+
         needWait(5000);
         CitationsScreen.secondCitationOpenButton.check(matches(isDisplayed()));
+
     }
 }

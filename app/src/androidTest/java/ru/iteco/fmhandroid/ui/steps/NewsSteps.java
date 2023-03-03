@@ -14,14 +14,11 @@ import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsScreen;
+import ru.iteco.fmhandroid.ui.tests.BaseTest;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class NewsSteps {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+public class NewsSteps extends BaseTest {
 
     public static void enterNewsMenu(){
         Allure.step("Вход в меню - Новости");

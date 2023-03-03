@@ -13,22 +13,17 @@ import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
+import ru.iteco.fmhandroid.ui.tests.BaseTest;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class AuthScreenSteps {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+public class AuthScreenSteps extends BaseTest {
 
     public static void ValidDataEnter(){
         Allure.step("Ввод валидных данных логина и пароля");
-        needWait(5000);
         AuthorizationScreen.loginInput.perform(replaceText(DataHelper.validLoginStep));
         AuthorizationScreen.passwordInput.perform(replaceText(DataHelper.validPassStep));
         AuthorizationScreen.signInButton.perform(click());
-        needWait(2000);
     }
 }
 
