@@ -1,12 +1,12 @@
-package ru.iteco.fmhandroid.ui.tests.claimsTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.nestedScrollTo;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.nestedScrollTo;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -18,7 +18,7 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;

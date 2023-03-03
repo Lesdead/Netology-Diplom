@@ -1,9 +1,9 @@
-package ru.iteco.fmhandroid.ui.tests.newsTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;

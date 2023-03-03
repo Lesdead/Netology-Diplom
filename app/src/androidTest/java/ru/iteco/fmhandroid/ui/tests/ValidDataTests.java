@@ -1,9 +1,10 @@
-package ru.iteco.fmhandroid.ui.tests.mainMenuTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -18,11 +19,10 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
-import ru.iteco.fmhandroid.ui.steps.MainMenuSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class MainMenuTests {
+public class ValidDataTests {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -40,20 +40,30 @@ public class MainMenuTests {
     }
 
     @Test
-    @DisplayName("Отображение экрана - Главное меню")
-    @Description("Проверка кнопки main - Главное меню")
-    public void shouldMainMenuView(){
-        AuthScreenSteps.ValidDataEnter();
-        MainMenuSteps.enterMainMenuButton();
-        MainScreen.aboutOfMenu.check(matches(isDisplayed()));
+    @DisplayName("Отображение экрана авторизации")
+    @Description("При запуске приложения открывается экран с поллями воода логина и пароля")
+    public void shouldLoginScreenDisplayed(){
+        needWait(3000);
+        AuthorizationScreen.authorization.check(matches(withText("Authorization")));
     }
 
     @Test
-    @DisplayName("Нажатие на кнопку - News")
-    @Description("В главном меню открыть вкладку news и убедиться что новости в ленте присутствуют")
-    public void shouldNewsListOpen(){
+    @DisplayName("Ввод валидных значений авторизации")
+    @Description("Вход в приложение с валидными данными логина и пароля (login2)(password2)")
+    public void shouldValidDataEnter(){
         AuthScreenSteps.ValidDataEnter();
-        MainScreen.buttonToExpandOrHideNewsPart.perform(click());
-        MainScreen.containerListForNews.check(matches(isDisplayed()));
+        MainScreen.menuButton.check(matches(isDisplayed()));
+    }
+
+    @Test
+    @DisplayName("Выход из приложения")
+    @Description("Выход из приложения путем отключения логина  (logOut)")
+    public void shouldExitApp(){
+        AuthScreenSteps.ValidDataEnter();
+        MainScreen.authorizationButton.perform(click());
+        MainScreen.logOutButton.perform(click());
+        AuthorizationScreen.authorization.check(matches(isDisplayed()));
     }
 }
+
+

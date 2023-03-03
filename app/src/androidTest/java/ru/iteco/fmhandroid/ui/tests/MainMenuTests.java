@@ -1,9 +1,9 @@
-package ru.iteco.fmhandroid.ui.tests.citationsTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -16,13 +16,13 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
-import ru.iteco.fmhandroid.ui.screenElements.CitationsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
-import ru.iteco.fmhandroid.ui.steps.CitationSteps;
+import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
+import ru.iteco.fmhandroid.ui.steps.MainMenuSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class CitationsListTests {
+public class MainMenuTests {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -40,20 +40,20 @@ public class CitationsListTests {
     }
 
     @Test
-    @DisplayName("Отображение экрана - Цитаты")
-    @Description("При нажатии на кнопку в виде бабочки (тематические цитаты) открывается лента с цитатами")
-    public void shouldCitationMenuIsDisplayed(){
-        CitationSteps.enterCitationsMenu();
-        CitationsScreen.secondMissionTitleValue.check(matches(isDisplayed()));
+    @DisplayName("Отображение экрана - Главное меню")
+    @Description("Проверка кнопки main - Главное меню")
+    public void shouldMainMenuView(){
+        AuthScreenSteps.ValidDataEnter();
+        MainMenuSteps.enterMainMenuButton();
+        MainScreen.aboutOfMenu.check(matches(isDisplayed()));
     }
 
     @Test
-    @DisplayName("Отображение открытия цитаты")
-    @Description("При разворачивании второй цитаты отображается ее содержание")
-    public void shouldOpenSecondCitation(){
-        CitationSteps.enterCitationsMenu();
-        CitationsScreen.secondMissionTitleValue.perform(click());
-        needWait(5000);
-        CitationsScreen.secondCitationOpenButton.check(matches(isDisplayed()));
+    @DisplayName("Нажатие на кнопку - News")
+    @Description("В главном меню открыть вкладку news и убедиться что новости в ленте присутствуют")
+    public void shouldNewsListOpen(){
+        AuthScreenSteps.ValidDataEnter();
+        MainScreen.buttonToExpandOrHideNewsPart.perform(click());
+        MainScreen.containerListForNews.check(matches(isDisplayed()));
     }
 }

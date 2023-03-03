@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.allOf;
 
 import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 
 public class NewsScreen {
     public static ViewInteraction titleOfNewsBlock = onView(withText("News"));

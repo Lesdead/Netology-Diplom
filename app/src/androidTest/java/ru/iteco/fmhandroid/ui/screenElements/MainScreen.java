@@ -5,7 +5,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.ViewInteraction;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.R;
 
 public class MainScreen {

@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.ui.tests.newsTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -7,7 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
@@ -19,7 +19,7 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;

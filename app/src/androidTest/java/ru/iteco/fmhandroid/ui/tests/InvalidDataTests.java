@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.ui.tests.authScreenTests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -6,7 +6,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static ru.iteco.fmhandroid.ui.DataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -20,7 +20,7 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 

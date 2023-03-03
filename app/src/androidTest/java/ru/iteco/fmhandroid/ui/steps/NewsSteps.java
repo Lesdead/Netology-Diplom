@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.DataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsCreationEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.NewsScreen;
