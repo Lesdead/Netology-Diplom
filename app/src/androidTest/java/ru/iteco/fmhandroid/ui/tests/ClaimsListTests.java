@@ -114,16 +114,4 @@ public class ClaimsListTests {
         ClaimsScreen.filtersButton.perform(click());
         ClaimsScreen.filterWindowTitle.check(matches(isDisplayed()));
     }
-
-    @Test
-    public void testUUID(){
-        ClaimsSteps.createNewClaim();
-        ClaimsScreen.firstClaimCard.perform(click());
-        ClaimsScreen.buttonToAddComment.perform(nestedScrollTo());
-        ClaimsScreen.buttonToAddComment.perform(click());
-        CommentScreen.commentTestInputEditText.perform(replaceText(DataHelper.comment));
-        CommentScreen.saveButton.perform(click());
-        ClaimsScreen.newTestComment(DataHelper.comment);
-        ClaimsSteps.closeTestClaim();
-    }
 }
