@@ -22,22 +22,7 @@ import ru.iteco.fmhandroid.ui.steps.CitationSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class CitationsListTests {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-
-    @Before
-    public void logInCheck() {
-        try {
-            needWait(5000);
-            AuthorizationScreen.authorization.check(matches(isDisplayed()));
-        } catch (Exception e) {
-            MainScreen.authorizationButton.perform(click());
-            MainScreen.logOutButton.perform(click());
-        }
-    }
+public class CitationsListTests  extends BaseTest {
 
     @Test
     @DisplayName("Отображение экрана - Цитаты")

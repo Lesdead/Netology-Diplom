@@ -22,27 +22,12 @@ import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 
 @LargeTest 
 @RunWith(AllureAndroidJUnit4.class)
-public class AboutMenuTests {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-
-    @Before
-    public void logInCheck() {
-        try {
-            needWait(5000);
-            AuthorizationScreen.authorization.check(matches(isDisplayed()));
-        } catch (Exception e) {
-            MainScreen.authorizationButton.perform(click());
-            MainScreen.logOutButton.perform(click());
-        }
-    }
+public class AboutMenuTests extends BaseTest {
 
     @Test
     @DisplayName("Отображение экрана - About")
     @Description("При нажатии на кнопку About  в меню серху открывается информация о приложении")
-    public void shouldAboutMenuDisplayed(){
+    public void shouldAboutMenuDisplayed () {
         AboutSteps.enterAboutMenu();
         AboutAppScreen.versionValue.check(matches(isDisplayed()));
     }

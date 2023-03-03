@@ -26,22 +26,7 @@ import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class InvalidDataTests {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-
-    @Before
-    public void logInCheck() {
-        try {
-            needWait(5000);
-            AuthorizationScreen.authorization.check(matches(isDisplayed()));
-        } catch (Exception e) {
-            MainScreen.authorizationButton.perform(click());
-            MainScreen.logOutButton.perform(click());
-        }
-    }
+public class InvalidDataTests  extends BaseTest  {
 
     @Test
     @DisplayName("Ввод невадилных данных (login1), (password1)")

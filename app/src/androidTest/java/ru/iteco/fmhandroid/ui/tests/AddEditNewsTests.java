@@ -29,22 +29,7 @@ import ru.iteco.fmhandroid.ui.steps.NewsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class AddEditNewsTests {
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-
-    @Before
-    public void logInCheck() {
-        try {
-            needWait(5000);
-            AuthorizationScreen.authorization.check(matches(isDisplayed()));
-        } catch (Exception e) {
-            MainScreen.authorizationButton.perform(click());
-            MainScreen.logOutButton.perform(click());
-        }
-    }
+public class AddEditNewsTests  extends BaseTest {
 
     @Test
     @DisplayName("Создание валидной новости")
