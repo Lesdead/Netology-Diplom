@@ -56,8 +56,10 @@ public class ValidDataTests  extends BaseTest {
     public void shouldExitApp(){
         AuthScreenSteps.ValidDataEnter();
 
-        elementWaiting(withId(R.id.authorization_image_button), 3000);
-        MainScreen.authorizationButton.perform(click());
+//        elementWaiting(withId(R.id.authorization_image_button), 3000);
+//        MainScreen.authorizationButton.perform(click());
+
+//        onView(isRoot()).perform(waitId(R.id.authorization_image_button, 3000));
 
         MainScreen.logOutButton.perform(click());
 

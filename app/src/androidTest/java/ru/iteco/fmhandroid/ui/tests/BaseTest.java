@@ -5,6 +5,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
 import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -26,7 +27,7 @@ public class BaseTest {
     @Before
     public void logInCheck() {
         try {
-            DataHelper.elementWaiting(withId(R.id.enter_button),5000);
+            elementWaiting(withId(R.id.enter_button),5000);
         } catch (Exception e) {
             MainScreen.authorizationButton.perform(click());
             MainScreen.logOutButton.perform(click());
