@@ -4,26 +4,23 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
 import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.nestedScrollTo;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.withIndex;
 
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
-import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.screenElements.CommentScreen;
-import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 
 @LargeTest
@@ -31,26 +28,27 @@ import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
 public class ClaimsListTests  extends BaseTest {
 
     @Test
-    @DisplayName("Отображение экрана - притензии")
-    @Description("После открытия меню с притензиями появляется список притензий созданный ранее")
+    @DisplayName("Отображение экрана - претензии")
+    @Description("После открытия меню с претензиями появляется список претензий созданный ранее")
     public void shouldClaimsMenuDisplayed(){
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
     }
 
     @Test
-    @DisplayName("Раскрытие первой притензии")
-    @Description("Разворачивание конкретной притензии с помощью кнопки-стрелочки")
+    @DisplayName("Раскрытие первой претензии")
+    @Description("Разворачивание конкретной претензии с помощью кнопки-стрелочки")
     public void shouldClaimDisplayed(){
         ClaimsSteps.createNewClaim();
+        elementWaiting(withIndex(withId(R.id.title_material_text_view), 0), 5000);
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
         ClaimsSteps.closeTestClaim();
     }
 
     @Test
-    @DisplayName("Сворачивание раскрытой притензии")
-    @Description("В меню просмотра притензии проверить кнопку возрата к списку притензий")
+    @DisplayName("Сворачивание раскрытой претензии")
+    @Description("В меню просмотра претензии проверить кнопку возрата к списку претензий")
     public void shouldOpenClaimClosing(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
@@ -61,8 +59,8 @@ public class ClaimsListTests  extends BaseTest {
     }
 
     @Test
-    @DisplayName("Создание валидного комментария к притензии")
-    @Description("Создание коментария к притензии с валидным значением")
+    @DisplayName("Создание валидного комментария к претензии")
+    @Description("Создание коментария к претензии с валидным значением")
     public void shouldCreateValidComment(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
@@ -75,8 +73,8 @@ public class ClaimsListTests  extends BaseTest {
     }
 
     @Test
-    @DisplayName("Смена заголовка притензии")
-    @Description("Редактирование уже созданной притензии и внесение в нее новой валидной информации в поле Title")
+    @DisplayName("Смена заголовка претензии")
+    @Description("Редактирование уже созданной претензии и внесение в нее новой валидной информации в поле Title")
     public void shouldChangeTitleOfClaim(){
         ClaimsSteps.createNewClaim();
         ClaimsScreen.firstClaimCard.perform(click());
@@ -92,8 +90,8 @@ public class ClaimsListTests  extends BaseTest {
     }
 
     @Test
-    @DisplayName("Открытие фильтра притензий")
-    @Description("Проверка открытия окна с фильтрами для списка притензий")
+    @DisplayName("Открытие фильтра претензий")
+    @Description("Проверка открытия окна с фильтрами для списка претензий")
     public void shouldOpenFilterClaims(){
         ClaimsSteps.enterClaimsMenu();
         ClaimsScreen.filtersButton.perform(click());

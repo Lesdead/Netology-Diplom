@@ -22,21 +22,26 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
 import androidx.test.espresso.util.TreeIterables;
-
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 public class DataHelper {
-
     public static String title = "testTit-" + UUID.randomUUID().toString().substring(0, 4);
     public static String cyrillicTitle = "testCyrT-" + UUID.randomUUID().toString().substring(0, 4);
     public static String description = "testDes-" + UUID.randomUUID().toString().substring(0, 4);
     public static String comment = "testComm-" + UUID.randomUUID().toString().substring(0, 4);
 
+    public static String validLoginStep = "login2";
+    public static String validPassStep = "password2";
+    public static String noValidLoginStep = "login1";
+    public static String noValidPassStep = "password1";
+    public static String mainTextScreen = "Хоспис в своем истинном понимании - это творчество";
+    public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
+    public static String oldDateClaim = "14.07.1789";
+
     public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
         return new TypeSafeMatcher<View>() {
             int currentIndex = 0;
-
             @Override
             public void describeTo(Description description) {
                 description.appendText("with index: ");
@@ -53,7 +58,6 @@ public class DataHelper {
 
     public static ViewAction nestedScrollTo() {
         return new ViewAction() {
-
             @Override
             public Matcher<View> getConstraints() {
                 return Matchers.allOf(
@@ -111,15 +115,6 @@ public class DataHelper {
         return view.getParent();
     }
 
-    public static String validLoginStep = "login2";
-    public static String validPassStep = "password2";
-    public static String noValidLoginStep = "login1";
-    public static String noValidPassStep = "password1";
-    public static String mainTextScreen = "Хоспис в своем истинном понимании - это творчество";
-    public static String insideTextScreen = "Нет шаблона и стандарта, есть только дух, который живет в разных домах по-разному. Но всегда он добрый, любящий и помогающий.";
-    public static String oldDateClaim = "14.07.1789";
-
-
     public static ViewAction waitFor(final long millis) {
         return new ViewAction() {
             @Override
@@ -143,8 +138,6 @@ public class DataHelper {
         onView(isRoot()).perform(waitFor(millis));
     }
 
-
-
     public static ViewAction waitId(final int viewId, final long millis) {
         return new ViewAction() {
             @Override
@@ -163,20 +156,15 @@ public class DataHelper {
                 final long startTime = System.currentTimeMillis();
                 final long endTime = startTime + millis;
                 final Matcher<View> viewMatcher = withId(viewId);
-
                 do {
                     for (View child : TreeIterables.breadthFirstViewTraversal(view)) {
-                        // found view with required ID
                         if (viewMatcher.matches(child)) {
                             return;
                         }
                     }
-
                     uiController.loopMainThreadForAtLeast(50);
                 }
                 while (System.currentTimeMillis() < endTime);
-
-                // timeout happens
                 throw new PerformException.Builder()
                         .withActionDescription(this.getDescription())
                         .withViewDescription(HumanReadables.describe(view))
@@ -209,24 +197,17 @@ public class DataHelper {
                 final long startTime = System.currentTimeMillis();
                 final long endTime = startTime + millis;
                 final Matcher<View> viewMatcher = matcher;
-
                 do {
                     for (View child : TreeIterables.breadthFirstViewTraversal(view)) {
-                        try { // found view with required ID
+                        try {
                             if (viewMatcher.matches(child)) {
                                 return;
                             }
-                        } catch (NoMatchingViewException e) {
-                            // ignore
-                        }
-
+                        } catch (NoMatchingViewException e) {}
                         uiController.loopMainThreadForAtLeast(50);
                     }
-
                 }
                 while (System.currentTimeMillis() < endTime);
-
-                // timeout happens
                 throw new PerformException.Builder()
                         .withActionDescription(this.getDescription())
                         .withViewDescription(HumanReadables.describe(view))
@@ -234,6 +215,5 @@ public class DataHelper {
                         .build();
             }
         };
-
     }
 }

@@ -1,18 +1,16 @@
 package ru.iteco.fmhandroid.ui.steps;
 
-import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
 import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
 
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
-import org.junit.Rule;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
@@ -53,7 +51,6 @@ public class ClaimsSteps extends BaseTest {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        needWait(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -61,7 +58,9 @@ public class ClaimsSteps extends BaseTest {
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
+        needWait(2000);
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+        elementWaiting(withId(R.id.add_new_claim_material_button), 3000);
     }
 
     public static void createNewClaimWithoutTitle(){
@@ -87,7 +86,6 @@ public class ClaimsSteps extends BaseTest {
         MainMenuSteps.enterMainMenuButton();
         MainScreen.claimsOfMenu.perform(click());
         ClaimsScreen.addNewClaimButton.perform(click());
-        needWait(500);
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Тест1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -95,7 +93,9 @@ public class ClaimsSteps extends BaseTest {
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
+        needWait(2000);
         ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+        elementWaiting(withId(R.id.add_new_claim_material_button), 3000);
     }
 
     public static void closeTestClaim(){
