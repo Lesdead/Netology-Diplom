@@ -4,6 +4,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.*;
+import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.wait;
 
 import androidx.test.filters.LargeTest;
 import org.junit.Test;
@@ -11,9 +13,14 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
+import ru.iteco.fmhandroid.ui.dataHelper.DataHelper.*;
+
 import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreen;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreen;
 import ru.iteco.fmhandroid.ui.steps.AuthScreenSteps;
+
+
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -33,6 +40,18 @@ public class ValidDataTests  extends BaseTest {
         AuthScreenSteps.ValidDataEnter();
         MainScreen.menuButton.check(matches(isDisplayed()));
     }
+
+    ///////////////
+    @Test
+    @DisplayName("Ввод валидных значений авторизации")
+    @Description("Вход в приложение с валидными данными логина и пароля (login2)(password2)")
+    public void shouldValidDataEnter1(){
+        AuthScreenSteps.ValidDataEnter1();
+
+//        MainScreen.menuButton.check(matches(isDisplayed()));
+        DataHelper.wait(MainScreen.menuButton1).check(matches(isDisplayed()));
+    }
+    ////////////////
 
     @Test
     @DisplayName("Выход из приложения")
