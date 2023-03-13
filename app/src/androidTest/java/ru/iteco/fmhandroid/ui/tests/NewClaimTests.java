@@ -3,10 +3,7 @@ package ru.iteco.fmhandroid.ui.tests;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.withIndex;
 
 import androidx.test.filters.LargeTest;
 import org.junit.Test;
@@ -14,7 +11,6 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
 import ru.iteco.fmhandroid.ui.steps.ClaimsSteps;
@@ -28,7 +24,6 @@ public class NewClaimTests extends BaseTest {
     @Description("Создание претензии и заполнение полей валидными значениями")
     public void shouldAddNewClaim(){
         ClaimsSteps.createNewClaim();
-        elementWaiting(withIndex(withId(R.id.title_material_text_view), 0), 5000);
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
         ClaimsSteps.closeTestClaim();
@@ -57,7 +52,6 @@ public class NewClaimTests extends BaseTest {
     @Description("Ввод в поле Title текста на кирилице")
     public void shouldEnterCyrillicSymbols(){
         ClaimsSteps.createNewClaimCyrillicSymbols();
-        elementWaiting(withIndex(withId(R.id.title_material_text_view), 0), 5000);
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Тест1")));
         ClaimsSteps.closeTestClaim();

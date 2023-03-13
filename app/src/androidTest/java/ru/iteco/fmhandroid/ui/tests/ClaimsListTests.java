@@ -4,11 +4,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
 import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.nestedScrollTo;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.withIndex;
 
 import androidx.test.filters.LargeTest;
 import org.junit.Test;
@@ -16,7 +13,6 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
@@ -40,21 +36,8 @@ public class ClaimsListTests  extends BaseTest {
     @Description("Разворачивание конкретной претензии с помощью кнопки-стрелочки")
     public void shouldClaimDisplayed(){
         ClaimsSteps.createNewClaim();
-        elementWaiting(withIndex(withId(R.id.title_material_text_view), 0), 5000);
         ClaimsScreen.firstClaimCard.perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(withText("Test1")));
-        ClaimsSteps.closeTestClaim();
-    }
-
-    @Test
-    @DisplayName("Сворачивание раскрытой претензии")
-    @Description("В меню просмотра претензии проверить кнопку возрата к списку претензий")
-    public void shouldOpenClaimClosing(){
-        ClaimsSteps.createNewClaim();
-        ClaimsScreen.firstClaimCard.perform(click());
-        ClaimsScreen.closeClaim.perform(click());
-        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
-        ClaimsScreen.firstClaimTopicText.perform(click());
         ClaimsSteps.closeTestClaim();
     }
 
@@ -84,9 +67,21 @@ public class ClaimsListTests  extends BaseTest {
         ClaimsScreen.okButton.perform(click());
         ClaimsScreen.editClaimButton.perform(click());
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(DataHelper.title));
-        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+        DataHelper.wait(ClaimCreationAndEditingScreen.saveButtonOfClaim).perform(click());
         ClaimsScreen.titleTextOfClaim.check(matches(isDisplayed()));
         ClaimsSteps.closeEditedTestClaim();
+    }
+
+    @Test
+    @DisplayName("Сворачивание раскрытой претензии")
+    @Description("В меню просмотра претензии проверить кнопку возрата к списку претензий")
+    public void shouldOpenClaimClosing(){
+        ClaimsSteps.createNewClaim();
+        ClaimsScreen.firstClaimCard.perform(click());
+        ClaimsScreen.closeClaim.perform(click());
+        ClaimsScreen.titleOfClaimsBlock.check(matches(isDisplayed()));
+        ClaimsScreen.firstClaimTopicText.perform(click());
+        ClaimsSteps.closeTestClaim();
     }
 
     @Test

@@ -2,15 +2,13 @@ package ru.iteco.fmhandroid.ui.steps;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.elementWaiting;
-import static ru.iteco.fmhandroid.ui.dataHelper.DataHelper.needWait;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.filters.LargeTest;
 import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.dataHelper.DataHelper;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimCreationAndEditingScreen;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreen;
@@ -25,32 +23,23 @@ public class ClaimsSteps extends BaseTest {
         Allure.step("Вход в меню - Притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-    }
-
-    public static void openFirstClaim(){
-        Allure.step("Открытие первой притензии");
-        AuthScreenSteps.ValidDataEnter();
-        MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-        ClaimsScreen.firstClaimCard.perform(click());
-        needWait(500);
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
     }
 
     public static void openCreateNewClaimMenu(){
         Allure.step("Открыть экран создания притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-        ClaimsScreen.addNewClaimButton.perform(click());
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).perform(click());
     }
 
     public static void createNewClaim(){
         Allure.step("Создание валидной притензии");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-        ClaimsScreen.addNewClaimButton.perform(click());
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).perform(click());
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Test1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -58,18 +47,16 @@ public class ClaimsSteps extends BaseTest {
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
-        needWait(2000);
-        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
-        elementWaiting(withId(R.id.add_new_claim_material_button), 3000);
+        DataHelper.wait(ClaimCreationAndEditingScreen.saveButtonOfClaim).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).check(ViewAssertions.matches(isDisplayed()));
     }
 
     public static void createNewClaimWithoutTitle(){
         Allure.step("Создание притензии без заголовка");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-        ClaimsScreen.addNewClaimButton.perform(click());
-        needWait(500);
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).perform(click());
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText(""));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -77,15 +64,15 @@ public class ClaimsSteps extends BaseTest {
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
-        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
+        DataHelper.wait(ClaimCreationAndEditingScreen.saveButtonOfClaim).perform(click());
     }
 
     public static void createNewClaimCyrillicSymbols(){
         Allure.step("Создание притензии на кириллице");
         AuthScreenSteps.ValidDataEnter();
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
-        ClaimsScreen.addNewClaimButton.perform(click());
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).perform(click());
         ClaimCreationAndEditingScreen.titleTextInputOfClaim.perform(replaceText("Тест1"));
         ClaimCreationAndEditingScreen.buttonForShowingDropdownMenu.perform(click());
         ClaimCreationAndEditingScreen.executorName.perform(click());
@@ -93,9 +80,8 @@ public class ClaimsSteps extends BaseTest {
         ClaimCreationAndEditingScreen.timeInPlanOfClaim.perform(click());
         ClaimCreationAndEditingScreen.okButton.perform(click());
         ClaimCreationAndEditingScreen.descriptionTextInputOfClaim.perform(replaceText("Test1"));
-        needWait(2000);
-        ClaimCreationAndEditingScreen.saveButtonOfClaim.perform(click());
-        elementWaiting(withId(R.id.add_new_claim_material_button), 3000);
+        DataHelper.wait(ClaimCreationAndEditingScreen.saveButtonOfClaim).perform(click());
+        DataHelper.wait(ClaimsScreen.addNewClaimButton).check(ViewAssertions.matches(isDisplayed()));
     }
 
     public static void closeTestClaim(){

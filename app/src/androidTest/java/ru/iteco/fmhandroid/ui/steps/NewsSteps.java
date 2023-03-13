@@ -52,7 +52,7 @@ public class NewsSteps extends BaseTest {
     public static void deleteTestNews(){
         Allure.step("Удалить тестовую новость");
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.editNewsButton.perform(click());
@@ -69,7 +69,7 @@ public class NewsSteps extends BaseTest {
     public static void deleteCyrillicTestNews(){
         Allure.step("Удалить тестовую новость на кириллице");
         MainMenuSteps.enterMainMenuButton();
-        MainScreen.claimsOfMenu.perform(click());
+        DataHelper.wait(MainScreen.claimsOfMenu).perform(click());
         MainMenuSteps.enterMainMenuButton();
         MainScreen.newsOfMenu.perform(click());
         NewsScreen.editNewsButton.perform(click());

@@ -6,7 +6,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import android.view.View;
 import androidx.test.espresso.ViewInteraction;
+import org.hamcrest.Matcher;
 import ru.iteco.fmhandroid.R;
 
 public class ClaimCreationAndEditingScreen {
@@ -17,7 +19,8 @@ public class ClaimCreationAndEditingScreen {
     public static ViewInteraction timeInPlanOfClaim = onView(withId(R.id.time_in_plan_text_input_edit_text));
     public static ViewInteraction okButton = onView(withText("OK"));
     public static ViewInteraction descriptionTextInputOfClaim = onView(withId(R.id.description_edit_text));
-    public static ViewInteraction saveButtonOfClaim = onView(withId(R.id.save_button));
     public static ViewInteraction cancelButton = onView(withText("CANCEL"));
     public static ViewInteraction fillEmptyFieldsMessage = onView( withText("Fill empty fields"));
+
+    public static Matcher<View> saveButtonOfClaim = withId(R.id.save_button);
 }
